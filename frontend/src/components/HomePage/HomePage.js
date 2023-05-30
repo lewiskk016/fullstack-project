@@ -1,12 +1,12 @@
-import React from "react";
-import AuthDropdown from "../AuthDropdown/AuthDropdown";
+// import React from "react";
+// import AuthDropdown from "../AuthDropdown/AuthDropdown";
 
-const HomePage = () => {
-    return (
-        <div className="home-page">
-            <AuthDropdown />
-        </div>
-    );
-};
+// const HomePage = () => {
+//     return (
+//         <div className="home-page">
+//             <AuthDropdown />
+//         </div>
+//     );
+// };
 
-export default HomePage;
+// export default HomePage;

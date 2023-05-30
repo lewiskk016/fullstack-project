@@ -81,8 +81,8 @@
 
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import SignupFormPage from "../SignupFormPage";
-import LoginFormPage from "../LoginFormPage";
+// import SignupFormPage from "../SignupFormPage";
+// import LoginFormPage from "../LoginFormPage";
 import './auth.css';
 
 const AuthDropdown = () => {
@@ -117,7 +117,8 @@ const AuthDropdown = () => {
                         <button onClick={handleSignIn}>Sign In</button>
                     </div>
                     <div className="StartHere">
-                        <button onClick={handleSignUp}>New Customer? Start here.</button>
+                        New Customer?
+                        <button onClick={handleSignUp}> Start here.</button>
                     </div>
                 </div>
             )}

@@ -1,3 +1,29 @@
-.profile-dropdown {
-    position: absolute;
+/* .profile-dropdown {
+    position: relative;
+  } */
+
+  .navigation-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  }
+
+  .navigation-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation-item {
+    margin: 0 10px;
+  }
+
+  .search-bar-container {
+    flex-grow: 1;
+  }
+
+  .login-container {
+    display: flex;
+    align-items: center;
   }

@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import SearchBar from './SearchBar';
+import AuthDropdown from '../AuthDropdown/AuthDropdown';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -17,16 +19,26 @@ function Navigation() {
     sessionLinks = (
       <>
         <LoginFormModal />
+        <AuthDropdown />
         {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
     );
   }
 
   return (
-    <ul>
+    <ul className="navigation-container">
       <li>
-        <NavLink exact to="/">Home</NavLink>
-        {sessionLinks}
+        <div className="navigation-row">
+          <div className="navigation-item">
+            <NavLink exact to="/">Home</NavLink>
+          </div>
+          <div className="navigation-item search-bar-container">
+            <SearchBar />
+          </div>
+          <div className="navigation-item login-container">
+            {sessionLinks}
+          </div>
+        </div>
       </li>
     </ul>
   );
