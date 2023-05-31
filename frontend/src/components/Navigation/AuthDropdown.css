@@ -18,13 +18,16 @@
     font-size: 14px;
     margin: 0;
     padding: 5px;
+    margin-right: 10px;
   }
 
   .second-welcome-message {
     position: flex;
     color: white;
     size: 1px;
-    height: 2px;
+    padding: 5px;
+    height: 20px;
+    margin-right: 10px;
   }
 
   .SignIn {
@@ -62,12 +65,30 @@
     box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
     z-index: 1;
   }
-
+/*
   .dropdown-content > div {
     margin-bottom: 10px;
     cursor: pointer;
-  }
+  } */
 
-  .dropdown-content > div:last-child {
+  /* .dropdown-content > div:last-child {
     margin-bottom: 0;
+  } */
+
+  .auth-dropdown-container .dropdown-content .Logout .logout-button  {
+    height: 33px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rbga(213,217,217,.5);
+    background: #fcd200;
+    border-color: #fcd200;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 30px;
+    vertical-align: middle;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
   }

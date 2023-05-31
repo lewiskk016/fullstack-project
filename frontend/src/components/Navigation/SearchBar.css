@@ -44,7 +44,7 @@
 
 .search-bar-container {
     display: flex;
-    margin: 2px;
+    margin: 3px;
     color: #d6d6d6;
     z-index: 1;
     flex-grow: 1;
