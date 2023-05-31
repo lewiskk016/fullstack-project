@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+// import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SearchBar from './SearchBar';
-import AuthDropdown from '../AuthDropdown/AuthDropdown';
+import AuthDropdown from './AuthDropdown';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -13,7 +13,8 @@ function Navigation() {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      // <ProfileButton user={sessionUser} />
+      <AuthDropdown user ={sessionUser} />
     );
   } else {
     sessionLinks = (

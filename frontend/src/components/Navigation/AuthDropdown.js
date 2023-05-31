@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 // import LoginFormPage from "../LoginFormPage";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
-import './auth.css';
+import './AuthDropdown.css';
 
 const AuthDropdown = () => {
     const dispatch = useDispatch();

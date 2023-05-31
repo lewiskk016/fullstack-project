@@ -3,10 +3,11 @@
   } */
   body {
     margin: 0;
+    padding: 0px;
   }
 
   .navigation-container {
-  display: flex;
+  display: relative;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -25,7 +26,11 @@
   }
 
   .search-bar-container {
-    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .login-container {

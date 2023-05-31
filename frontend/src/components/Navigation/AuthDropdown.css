@@ -27,10 +27,11 @@
     line-height: 30px;
     vertical-align: middle;
     font-size: 13px;
+    font-weight: bold;
     text-align: center;
   }
   .auth-dropdown-container button {
-    /* background: white; */
+    background: none;
     border: none;
     cursor: pointer;
   }

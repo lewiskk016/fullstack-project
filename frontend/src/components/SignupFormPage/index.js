@@ -38,50 +38,48 @@ function SignupFormPage() {
 
   return (
     <>
+    <div className="signup-form-page">
     <div className="signup-form-container">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="signup-form-header">Sign Up</h1>
+      <form className="signup-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error) => <li key={error}>{error}</li>)}
         </ul>
-        <label>
-          Email
-          <input
+        <label className="signup-form-label">
+          Email</label>
+          <input className="signup-form-input"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Username
-          <input
+        <label className="signup-form-label">
+          Username</label>
+          <input className="signup-form-input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
-          <input
+        <label className="signup-form-label">
+          Password</label>
+          <input className="signup-form-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Confirm Password
-          <input
+        <label className="signup-form-label">
+          Confirm Password </label>
+          <input className="signup-form-input"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Sign Up</button>
+        <button className="signup" type="submit">Sign Up</button>
       </form>
+    </div>
     </div>
     </>
   );

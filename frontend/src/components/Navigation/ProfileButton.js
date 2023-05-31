@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css'
+import './ProfileButton.css'
 // import AuthDropdown from '../AuthDropdown/AuthDropdown';
 
 function ProfileButton({ user }) {
@@ -36,7 +37,6 @@ function ProfileButton({ user }) {
       <div className="profile-button" onMouseOver={()=>{setShowMenu(true)}}></div>Hello, {user.name} <br></br> Account & Lists
 
       <button className="button" onClick={openMenu}>
-        <i className="fa-solid-fa-user-circle" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
