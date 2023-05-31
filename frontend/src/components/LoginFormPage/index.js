@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -61,6 +61,12 @@ function LoginFormPage() {
         <label className="Demo-User"></label>
         <button className="demo" type="submit" onClick={() => { setCredential("Demo-lition"); setPassword("password"); }}>Demo User</button>
         </div>
+        <div className="signup-link-container">
+              <span>Don't have an account?</span>
+              <Link to="/signup" className="signup-link">
+                Sign Up
+              </Link>
+            </div>
       </form>
       </div>
       </div>

@@ -1,6 +1,6 @@
 import Splash from '../../Images/aves-on.jpg'
 import './MainPage.css'
-import Smile from '../../Images/welcome-amazon-smile.jpg'
+// import Smile from '../../Images/welcome-amazon-smile.jpg'
 
 
 const SplashPage = () => {
@@ -9,7 +9,7 @@ const SplashPage = () => {
             <div className="splash-container">
                 <img className="splash-image" src={Splash} alt="splash" />
             </div>
-            <h1 className="splash-title">There's nothing wrong with watching...
+            <h1 className="splash-title">There's nothing wrong with staring...
             {/* <img className="amazon-smile" src={Smile} alt="smile"/> */}
             </h1>
             {/* <h2 className="sub-splash-title">With watching</h2> */}
