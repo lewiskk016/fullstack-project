@@ -3,22 +3,28 @@
   } */
   body {
     margin: 0;
-    padding: 0px;
+    padding: 0;
+
   }
 
   .navigation-container {
-  display: relative;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  padding-bottom: 1px;
+  padding-top: 1px;
   width: 100%;
-  padding: 0px;
-  margin: 0px;
+  align-items: center;
   background-color: #000;
   }
 
   .navigation-row {
     display: flex;
     align-items: center;
+    flex-grow: 1;
   }
 
   .navigation-item {
@@ -26,32 +32,24 @@
   }
 
   .search-bar-container {
-    width: 100%;
     display: flex;
+    margin-bottom: 100px;
+    margin-top: 50px;
     justify-content: center;
     align-items: center;
-
   }
 
   .login-container {
-    display: flex;
-    align-items: center;
+
   }
 
-  .navigation-item-login-container {
-    margin: 0 10px;
+  .navigation-item-search-bar-container {
+    flex-grow: 1;
+    display: flex;
+    margin: 2px;
     color: #d6d6d6;
     z-index: 1;
   }
 
-  .fa-solid-fa-user-circle {
-    position: relative;
-    color: white;
-    size: 100px;
-
-  }
-
   .button {
-    size: 100px;
-    border-left-width: 80px;
   }

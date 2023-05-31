@@ -23,22 +23,20 @@ const AuthDropdown = () => {
 
     const handleSignIn = () => {
         handleMenuClose();
-        history.push("/login"); // Redirect to the login page
+        history.push("/login");
     };
 
     const handleSignUp = () => {
         handleMenuClose();
-        history.push("/signup"); // Redirect to the signup page
+        history.push("/signup");
     };
 
     const handleLogout = () => {
         dispatch(logout())
           .then(() => {
-            // Perform any additional actions after logout (e.g., redirect)
-            history.push("/"); // Redirect to the desired page after logout
+            history.push("/");
           })
           .catch((err) => {
-            // Handle any errors that occurred during logout
             console.log(err);
           });
       };
@@ -47,8 +45,7 @@ const AuthDropdown = () => {
         <div className="auth-dropdown-container" onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
             {!sessionUser && (
                 <>
-            <h2 className="welcome-message">Hello, sign in</h2>
-            <h3 className="sub-welcome-message">Account & Lists</h3>
+            <h2 className="first-welcome-message">Hello, sign in Account & Lists</h2>
         {/* </div> */}
 
             {/* <button>Hello, sign
@@ -68,8 +65,7 @@ const AuthDropdown = () => {
     )}
     {sessionUser && (
         <>
-            <h2 className="welcome-message">Hello, {sessionUser.username}</h2>
-            <h3 className="sub-welcome-message">Account & Lists</h3>
+            <h2 className="second-welcome-message">Hello, {sessionUser.username}</h2>
             {showMenu && (
                 <div className="dropdown-content">
                     <div className="Logout">

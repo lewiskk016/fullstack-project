@@ -1,16 +1,30 @@
 .auth-dropdown-container {
     position: relative;
+    display: inline-block;
     color: black;
+
   }
 
-  .welcome-message {
+  /* .welcome-message {
     color: white;
+    size: 2px;
     height: 2px;
+    top: 0px;
+    position: fixed;
+  } */
+
+  .first-welcome-message {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+    padding: 5px;
   }
 
-  .sub-welcome-message {
+  .second-welcome-message {
+    position: flex;
     color: white;
     size: 1px;
+    height: 2px;
   }
 
   .SignIn {
@@ -44,8 +58,8 @@
     flex-direction: column;
     background-color: white;
     padding: 10px;
-    border-top: none;
-    width: 150px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
     z-index: 1;
   }
 

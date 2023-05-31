@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+// import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SearchBar from './SearchBar';
 import AuthDropdown from './AuthDropdown';
@@ -18,8 +18,9 @@ function Navigation() {
     );
   } else {
     sessionLinks = (
+
       <>
-        <LoginFormModal />
+        {/* <LoginFormModal /> */}
         <AuthDropdown />
         {/* <NavLink to="/signup">Sign Up</NavLink> */}
       </>
@@ -27,8 +28,7 @@ function Navigation() {
   }
 
   return (
-    <ul className="navigation-container">
-      <li>
+    <nav className="navigation-container">
         <div className="navigation-row">
           <div className="navigation-item">
             <NavLink exact to="/">Home</NavLink>
@@ -40,8 +40,7 @@ function Navigation() {
             {sessionLinks}
           </div>
         </div>
-      </li>
-    </ul>
+    </nav>
   );
 }
 
