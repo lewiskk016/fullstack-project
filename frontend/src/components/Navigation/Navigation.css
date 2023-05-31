@@ -1,13 +1,18 @@
 /* .profile-dropdown {
     position: relative;
   } */
+  body {
+    margin: 0;
+  }
 
   .navigation-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 20px;
+  padding: 0px;
+  margin: 0px;
+  background-color: #000;
   }
 
   .navigation-row {
@@ -26,4 +31,22 @@
   .login-container {
     display: flex;
     align-items: center;
+  }
+
+  .navigation-item-login-container {
+    margin: 0 10px;
+    color: #d6d6d6;
+    z-index: 1;
+  }
+
+  .fa-solid-fa-user-circle {
+    position: relative;
+    color: white;
+    size: 100px;
+
+  }
+
+  .button {
+    size: 100px;
+    border-left-width: 80px;
   }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import './Navigation.css'
+// import AuthDropdown from '../AuthDropdown/AuthDropdown';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,8 +32,11 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
+      <div className="profile-button-container">
+      <div className="profile-button" onMouseOver={()=>{setShowMenu(true)}}></div>Hello, {user.name} <br></br> Account & Lists
+
+      <button className="button" onClick={openMenu}>
+        <i className="fa-solid-fa-user-circle" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
@@ -42,6 +47,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
+      </div>
     </>
   );
 }

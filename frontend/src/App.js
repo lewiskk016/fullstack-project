@@ -4,23 +4,22 @@ import SignupFormPage from "./components/SignupFormPage";
 // import HomePage from "./components/HomePage/HomePage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
+import Splash from "./components/MainPage/";
 
 function App() {
   return (
     <>
     <div className="app">
       <Navigation />
-        {/* <HomePage /> */}
-
         <Switch>
           <Route path="/login" >
             <LoginFormPage />
-
           </Route>
             <Route path="/signup">
             <SignupFormPage />
           </Route>
         </Switch>
+        <Splash />
           </div>
     </>
   );

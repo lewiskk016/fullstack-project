@@ -1,93 +1,17 @@
-// import React, { useState } from "react";
-// import SignupFomPage from "../SignupFormPage";
-// import LoginFormPage from "../LoginFormPage";
-// import './auth.css'
-
-// const AuthDropdown = () => {
-//     const [showMenu, setShowMenu] = useState(false);
-
-// const toggleDropdown = () => {
-//     setShowMenu(!showMenu);
-// }
-
-// const handleMenuClose = () => {
-//     setShowMenu(false);
-// }
-
-// return (
-//     <div className="auth-dropdown">
-//         <button onClick={toggleDropdown}>Hello, sign in</button>
-//         {showMenu && (
-//             <div className="dropdown-content" onClick={handleMenuClose}>
-//                 <LoginFormPage />
-//                 <SignupFomPage />
-//             </div>
-//         )}
-//     </div>
-// );
-// };
-
-// export default AuthDropdown;
-
-
-
-
-// import React, { useState } from "react";
-// import SignupFormPage from "../SignupFormPage";
-// import LoginFormPage from "../LoginFormPage";
-// import './auth.css';
-
-// const AuthDropdown = () => {
-//     const [showMenu, setShowMenu] = useState(false);
-
-//     const handleMenuOpen = () => {
-//         setShowMenu(true);
-//     };
-
-//     const handleMenuClose = () => {
-//         setShowMenu(false);
-//     };
-
-//     return (
-//         <div className="auth-dropdown" onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
-//             <button>Hello, sign in</button>
-//             {showMenu && (
-//                 <div className="dropdown-content">
-//                     <div>
-//                         <button onClick={() => { handleMenuClose(); /* Add redirection logic here */ }}>
-//                             Sign In
-//                         </button>
-//                     </div>
-//                     <div>
-//                         <button onClick={() => { handleMenuClose(); /* Add redirection logic here */ }}>
-//                             Sign Up
-//                         </button>
-//                     </div>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default AuthDropdown;
-
-
-
-
-
-
-
-
 
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 // import SignupFormPage from "../SignupFormPage";
 // import LoginFormPage from "../LoginFormPage";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/session";
 import './auth.css';
 
 const AuthDropdown = () => {
+    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
+    const sessionUser = useSelector(state => state.session.user);
 
     const handleMenuOpen = () => {
         setShowMenu(true);
@@ -107,10 +31,28 @@ const AuthDropdown = () => {
         history.push("/signup"); // Redirect to the signup page
     };
 
+    const handleLogout = () => {
+        dispatch(logout())
+          .then(() => {
+            // Perform any additional actions after logout (e.g., redirect)
+            history.push("/"); // Redirect to the desired page after logout
+          })
+          .catch((err) => {
+            // Handle any errors that occurred during logout
+            console.log(err);
+          });
+      };
+
     return (
         <div className="auth-dropdown-container" onMouseEnter={handleMenuOpen} onMouseLeave={handleMenuClose}>
-            <button>Hello, sign
-            Account & Lists</button>
+            {!sessionUser && (
+                <>
+            <h2 className="welcome-message">Hello, sign in</h2>
+            <h3 className="sub-welcome-message">Account & Lists</h3>
+        {/* </div> */}
+
+            {/* <button>Hello, sign
+            Account & Lists</button> */}
             {showMenu && (
                 <div className="dropdown-content">
                     <div className="SignIn">
@@ -122,7 +64,22 @@ const AuthDropdown = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </>
+    )}
+    {sessionUser && (
+        <>
+            <h2 className="welcome-message">Hello, {sessionUser.username}</h2>
+            <h3 className="sub-welcome-message">Account & Lists</h3>
+            {showMenu && (
+                <div className="dropdown-content">
+                    <div className="Logout">
+                        <button onClick={handleLogout}>Logout</button>
+                    </div>
+                </div>
+            )}
+            </>
+    )}
+    </div>
     );
 };
 

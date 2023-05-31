@@ -1,12 +1,22 @@
 .auth-dropdown-container {
     position: relative;
+    color: black;
+  }
+
+  .welcome-message {
+    color: white;
+    height: 2px;
+  }
+
+  .sub-welcome-message {
+    color: white;
+    size: 1px;
   }
 
   .SignIn {
     height: 33px;
     width: 100%;
     border-radius: 8px;
-    border-sizing: border-box;
     box-shadow: 0 2px 5px 0 rbga(213,217,217,.5);
     background: #fcd200;
     border-color: #fcd200;
@@ -20,7 +30,7 @@
     text-align: center;
   }
   .auth-dropdown-container button {
-    background: none;
+    /* background: white; */
     border: none;
     cursor: pointer;
   }
@@ -31,9 +41,8 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    background-color: #f9f9f9;
+    background-color: white;
     padding: 10px;
-    border: 1px solid #ccc;
     border-top: none;
     width: 150px;
     z-index: 1;

@@ -32,10 +32,10 @@ function Navigation() {
           <div className="navigation-item">
             <NavLink exact to="/">Home</NavLink>
           </div>
-          <div className="navigation-item search-bar-container">
+          <div className="navigation-item-search-bar-container">
             <SearchBar />
           </div>
-          <div className="navigation-item login-container">
+          <div className="navigation-item-login-container">
             {sessionLinks}
           </div>
         </div>
