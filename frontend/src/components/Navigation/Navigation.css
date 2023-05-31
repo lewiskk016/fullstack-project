@@ -9,6 +9,7 @@
 
   .navigation-container {
   display: flex;
+  /* flex-direction: column; */
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +20,22 @@
   width: 100%;
   align-items: center;
   background-color: #000;
+  z-index: 2;
   }
+
+
+  .navigation-home-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .navigation-home-link img {
+    width: 40px;
+    height: 30px;
+    margin-right: 5px;
+  }
+
 
   .navigation-row {
     display: flex;

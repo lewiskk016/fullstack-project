@@ -5,12 +5,15 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import Splash from "./components/MainPage/";
+import SubNavigation from "./components/SubNavigation";
+
 
 function App() {
   return (
     <>
     <div className="app">
       <Navigation />
+      <SubNavigation/>
         <Switch>
           <Route path="/login" >
             <LoginFormPage />
@@ -19,8 +22,8 @@ function App() {
             <SignupFormPage />
           </Route>
         </Switch>
-        <Splash />
           </div>
+        <Splash />
     </>
   );
 }

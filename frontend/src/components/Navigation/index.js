@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import './Navigation.css';
 import SearchBar from './SearchBar';
 import AuthDropdown from './AuthDropdown';
+import alogo from '../../Images/a-logo.jpg'
+// import Subnavigation from '../SubNavigation';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -31,7 +33,9 @@ function Navigation() {
     <nav className="navigation-container">
         <div className="navigation-row">
           <div className="navigation-item">
-            <NavLink exact to="/">Home</NavLink>
+            <NavLink exact to="/" className="navigation-home-link">
+            <img className="alogos" src={alogo} alt="alogo" />
+            </NavLink>
           </div>
           <div className="navigation-item-search-bar-container">
             <SearchBar />
