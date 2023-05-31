@@ -59,7 +59,7 @@ function LoginFormPage() {
         <button className="continue" type="submit">Continue</button>
         <div className="demo-user-container">
         <label className="Demo-User"></label>
-        <button className="demo" type="submit" onClick={() => { setCredential("Demo-lition"); setPassword("password"); }}>Demo User</button>
+        <button className="demo" type="submit" onClick={() => { setCredential("Demo-User"); setPassword("password"); }}>Demo User</button>
         </div>
         <div className="signup-link-container">
               <span>Don't have an account?</span>
