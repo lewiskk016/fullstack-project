@@ -10,7 +10,7 @@ function SubNavigation() {
         <nav className="sub-navigation-container">
             <div className="sub-navigation-row">
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/products">All</NavLink>
+                    <NavLink exact to="/items">All</NavLink>
                 </div>
                 <div className="sub-navigation-item">
                     <NavLink exact to="/products/5">Binoculars</NavLink>

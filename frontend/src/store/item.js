@@ -1,27 +1,35 @@
 import csrfFetch from './csrf';
 
-export const RETRIEVE_ITEMS = 'items/RETRIEVE_ITEMS';
-export const RETRIEVE_ITEM = 'items/RETRIEVE_ITEM';
+export const RETRIEVE_ITEMS = 'RETRIEVE_ITEMS';
+export const RETRIEVE_ITEM = 'RETRIEVE_ITEM';
 
 export const retrieveItems = (items) => {
     return {
-        type: RETRIEVE_ITEMS,
-        items,
+      type: RETRIEVE_ITEMS,
+      items
+    //   : Array.isArray(items) ? items : [],
     };
-}
+  };
 
 export const retrieveItem = (item) => {
     return {
         type: RETRIEVE_ITEM,
-        item,
+        item
     };
 }
 
 export const getItems = () => async (dispatch) => {
+    console.log('Fetching items...');
     const res = await csrfFetch('/api/items');
-    const items = await res.json();
-    dispatch(retrieveItems(items));
-}
+    if (res.ok) {
+      console.log('Items response received');
+      const items = await res.json();
+      console.log('Dispatching retrieveItems');
+      dispatch(retrieveItems(items));
+    } else {
+      console.log('Error fetching items:', res.status, res.statusText);
+    }
+  };
 
 export const getItem = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/items/${id}`);
@@ -29,18 +37,15 @@ export const getItem = (id) => async (dispatch) => {
     dispatch(retrieveItem(item));
 }
 
-const itemsReducer = (state = {}, action) => {
-    let newState = {};
-    switch (action.type) {
-        case RETRIEVE_ITEMS:
-            action.items.forEach(item => {
-                newState[item.id] = item;
-            });
-            return newState;
+    const itemsReducer = (state = {}, action) => {
+        switch (action.type) {
+          case RETRIEVE_ITEMS:
+            return {...state, ...action.items};
         case RETRIEVE_ITEM:
-            newState = Object.assign({}, state);
-            newState[action.item.id] = action.item;
-            return newState;
+            return {
+                ...state,
+                [action.item.id]: action.item,
+            };
         default:
             return state;
     }
