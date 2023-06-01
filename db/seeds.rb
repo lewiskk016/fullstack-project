@@ -34,6 +34,18 @@ ApplicationRecord.transaction do
 
     bird_items = [
       {
+        name: "Hummingbird Feeder",
+        category: "Feeder",
+        price: 24.99,
+        description: "A hummingbird feeder that can be filled with hummingbird nectar.",
+      },
+      {
+        name: "Bird Feeder",
+        category: "Feeder",
+        price: 14.99,
+        description: "A simple bird feeder that can be filled with bird seed.",
+      },
+      {
         name: "Colorful Bird Feeder",
         category: "Feeder",
         price: 19.99,

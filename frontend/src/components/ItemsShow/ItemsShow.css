@@ -1,0 +1,13 @@
+/* .items-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 100px;
+} */
+
+
+.itemslist {
+    background-color: rgba(250, 250, 193, 0.827);
+    color: black;
+    margin-top: 100px; 
+  }

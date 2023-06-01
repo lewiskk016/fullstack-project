@@ -20,7 +20,7 @@ export const retrieveItem = (item) => {
 
 export const getItems = () => async (dispatch) => {
     console.log('Fetching items...');
-    const res = await csrfFetch('/api/items');
+    const res = await csrfFetch('api/items');
     if (res.ok) {
       console.log('Items response received');
       const items = await res.json();
