@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import './SubNavigation.css';
 
 
@@ -22,13 +22,13 @@ function SubNavigation() {
                     <NavLink exact to="/products/1">Feeders</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/products/2">Bird Seed</NavLink>
+                    <NavLink exact to="/products/2">Seed</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/products/3">Bird Baths</NavLink>
+                    <NavLink exact to="/products/3">Baths</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/products/4">Bird Houses</NavLink>
+                    <NavLink exact to="/products/4">Houses</NavLink>
                 </div>
                 </div>
         </nav>
