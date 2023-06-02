@@ -1,0 +1,10 @@
+.item-show-container {
+    background-color: rgba(250, 250, 193, 0.827);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 90px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}

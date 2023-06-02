@@ -5,7 +5,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import Splash from "./components/MainPage/";
 import SubNavigation from "./components/SubNavigation";
-import ItemsShow from "./components/ItemsShow";
+import ItemsIndex from "./components/ItemsIndex";
+import ItemShow from "./components/ItemShow";
 
 // function App() {
 //   return (
@@ -37,7 +38,7 @@ import ItemsShow from "./components/ItemsShow";
 
 
 function App() {
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <div className="app">
@@ -51,10 +52,14 @@ function App() {
           <SignupFormPage />
         </Route>
         <Route path="/items">
-          <ItemsShow />
+          <ItemsIndex />
+        </Route>
+        <Route path="/items/:itemId">
+          <ItemShow />
         </Route>
       </Switch>
-      {!location.pathname.includes("/items") && <Splash />}
+      {/* {!location.pathname.includes("/items") && <Splash />} */}
+      <Splash />
     </div>
   );
 }

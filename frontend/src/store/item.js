@@ -3,22 +3,32 @@ import csrfFetch from './csrf';
 export const RETRIEVE_ITEMS = 'RETRIEVE_ITEMS';
 export const RETRIEVE_ITEM = 'RETRIEVE_ITEM';
 
-export const retrieveItems = (items) => {
+// debugger
+export const retrieveItems = items => {
     return {
       type: RETRIEVE_ITEMS,
       items
-    //   : Array.isArray(items) ? items : [],
     };
   };
 
-export const retrieveItem = (item) => {
+  // debugger
+export const retrieveItem = item => {
     return {
         type: RETRIEVE_ITEM,
         item
     };
 }
+// debugger
+export const getItems = state => {
+  return state?.items ? Object.values(state.items) : [];
+}
 
-export const getItems = () => async (dispatch) => {
+// debugger
+// export const getItem = id => state => {
+//   return state?.items ? state.items[id] : null;
+// }
+// debugger
+export const fetchItems = () => async (dispatch) => {
     console.log('Fetching items...');
     const res = await csrfFetch('api/items');
     if (res.ok) {
@@ -31,21 +41,34 @@ export const getItems = () => async (dispatch) => {
     }
   };
 
-export const getItem = (id) => async (dispatch) => {
-    const res = await csrfFetch(`/api/items/${id}`);
-    const item = await res.json();
-    dispatch(retrieveItem(item));
+// debugger
+export const fetchItem = itemId => async dispatch => {
+    const response = await csrfFetch(`api/items/${itemId}`);
+    const data = await response.json()
+    // dispatch(retrieveItem(data.item))
+    dispatch(retrieveItems(data.items))
+    return response;
+    // if (response.ok) {
+    //     const item = await res.json();
+    //     dispatch(retrieveItem(item));
+    // }
 }
 
+// export const fetchReport = (reportId) => async (dispatch) => {
+//   const res = await fetch(`/api/reports/${reportId}`);
+//   if (res.ok) {
+//       const report = await res.json();
+//       dispatch({ type: RECEIVE_REPORT, report });
+//   }
+// };
+
+// debugger
     const itemsReducer = (state = {}, action) => {
-        switch (action.type) {
+        switch(action.type) {
           case RETRIEVE_ITEMS:
             return {...state, ...action.items};
         case RETRIEVE_ITEM:
-            return {
-                ...state,
-                [action.item.id]: action.item,
-            };
+            return { ...state, [action.item.id]: action.item};
         default:
             return state;
     }
