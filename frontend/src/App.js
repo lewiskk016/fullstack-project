@@ -38,13 +38,16 @@ import ItemShow from "./components/ItemShow";
 
 
 function App() {
-  // const location = useLocation();
+  const location = useLocation();
 
   return (
     <div className="app">
       <Navigation />
       <SubNavigation />
       <Switch>
+      <Route path="/items/:itemId">
+          <ItemShow />
+        </Route>
         <Route path="/login">
           <LoginFormPage />
         </Route>
@@ -54,12 +57,12 @@ function App() {
         <Route path="/items">
           <ItemsIndex />
         </Route>
-        <Route path="/items/:itemId">
-          <ItemShow />
-        </Route>
+
       </Switch>
-      {/* {!location.pathname.includes("/items") && <Splash />} */}
-      <Splash />
+      {!location.pathname.includes("/items") && <Splash />}
+      {/* < Route path="/">
+        <Splash />
+        </Route> */}
     </div>
   );
 }
