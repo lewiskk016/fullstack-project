@@ -45,8 +45,8 @@ export const fetchItems = () => async (dispatch) => {
 export const fetchItem = itemId => async dispatch => {
     const response = await csrfFetch(`api/items/${itemId}`);
     const data = await response.json()
-    // dispatch(retrieveItem(data.item))
-    dispatch(retrieveItems(data.items))
+    dispatch(retrieveItem(data.item))
+    // dispatch(retrieveItems(data.items))
     return response;
     // if (response.ok) {
     //     const item = await res.json();
