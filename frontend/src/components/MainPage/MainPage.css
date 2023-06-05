@@ -1,7 +1,7 @@
 .splash-page {
  position: absolute;
- width: 200px;
- height: 100px;
+ width: 100%;
+ height: 100%;
  z-index: -1;
 }
 
@@ -10,26 +10,97 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    /* bottom: 150px;
-    left: 0px;
-    right: 0px;
-    width: 200px;
-    height: 100%; */
 }
 
-.splash-image {
-    position: fixed;
+.splash-container2 {
+    position: relative;
+    z-index: 0;
     width: 100%;
     height: 100%;
 }
 
-.splash-title {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.splash-container3 {
     position: relative;
-    top: 45px;
+    /* z-index: 1; */
+    width: 100%;
+    height: 60%;
+}
+
+.splash-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.splash-image2 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.splash-image3 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.splash-image4 {
+    position: relative;
+    transform: scaleY(.8);
+    width: 100%;
+    height: 100%;
+    top: -10px;
+}
+
+.splash-text {
+    position: absolute;
+    font: Amazon Ember;
+    top: 75px;
     left: 50px;
     width: 300px;
     font-size: 35px;
+    z-index: 1;
+}
+
+.splash-text2 {
+    position: absolute;
+    font: Amazon Ember;
+    top: 150px;
+    left: 100px;
+    width: 300px;
+    font-size: 35px;
+    z-index: 1;
+}
+
+.splash-text3 {
+    position: absolute;
+    font: Amazon Ember;
+    top: 225px;
+    left: 125px;
+    width: 300px;
+    font-size: 35px;
+    z-index: 1;
+}
+
+
+.splash-text4 {
+    position: absolute;
+    font: Amazon Ember;
+    top: 300px;
+    left: 150px;
+    width: 300px;
+    font-size: 35px;
+    z-index: 1;
+}
+
+.splash-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    top: 100px;
+    left: 75px;
+    width: 300px;
+    font-size: 35px;
+    z-index: 1;
 }
 
 .sub-splash-title {
@@ -38,4 +109,26 @@
     top: 110px;
     left: 50px;
     font-size: 30px;
+}
+
+.carousel-root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel .slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel .legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
 }

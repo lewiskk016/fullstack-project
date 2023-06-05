@@ -8,3 +8,42 @@
     height: 100%;
     overflow-y: scroll;
 }
+
+.item-container {
+    display: flex;
+}
+
+.name {
+    font-size: 30px;
+    margin: 20px;
+}
+
+.rating-container {
+    display: flex;
+    margin: 30px;
+}
+
+.rating-stars {
+    margin: 10px;
+    display: flex;
+}
+
+.item-price {
+    font-size: 15px;
+    margin: 20px;
+    align-items: right;
+}
+
+.quantity-container {
+    display: flex;
+    margin: 30px;
+    justify-content: right;
+    align-items: right;
+}
+
+.submit-button {
+    position: absolute;
+    justify-content: right;
+    align-items: right;
+
+}

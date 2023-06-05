@@ -44,10 +44,13 @@ export const fetchItems = () => async (dispatch) => {
 
 // debugger
 export const fetchItem = (itemId) => async (dispatch) => {
+  console.log('Fetching item...');
     const response = await csrfFetch(`
     /api/items/${itemId}`);
     if (response.ok) {
+      console.log('Item response received');
         const item = await response.json();
+        console.log('Dispatching retrieveItem');
         dispatch(retrieveItem(item));
     }
 }
