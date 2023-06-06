@@ -1,20 +1,11 @@
-.item-show-container {
-    background-color: #fff;
+/* .item-show-container {
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 90px;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
     align-items: flex-start;
 }
 
 .item-container {
-    display: flex;
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .name {
@@ -41,9 +32,8 @@
 }
 
 .add-to-shopping-list {
-    margin: 10px;
-    justify-content: right;
-    align-self: flex-end;
+   display: flex;
+    justify-content: flex-end;
 }
 
 .reviews-container {
@@ -51,4 +41,110 @@
     flex-direction: column;
     margin: 30px;
     padding: 30px;
-}
+} */
+
+
+
+
+
+
+
+
+
+/* .item-show-container {
+    align-items: flex-start;
+    margin-top: 100px;
+  }
+
+  .item-container {
+    position: relative;
+    width: 66.66%;
+  }
+
+  .checkout-container {
+    width: 33.33%;
+    margin-left: 20px;
+  }
+
+  .name {
+    font-size: 30px;
+    font: "Amazon Ember", sans-serif;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .rating-container {
+    margin: 30px;
+  }
+
+  .rating-stars {
+    margin: 10px;
+  }
+
+  .item-price {
+    font-size: 15px;
+    margin: 20px;
+    align-self: flex-end;
+  }
+
+  .add-to-shopping-list {
+    justify-content: flex-end;
+  }
+
+  .reviews-container {
+    flex-direction: column;
+    margin: 30px;
+    padding: 30px;
+  }
+
+
+
+  .add-to-cart-button {
+    background-color: orange;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .price-and-button {
+    position: relative;
+  } */
+
+
+
+
+  .item-show-container {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 200px;
+  }
+
+  .column {
+    flex-basis: 33.33%;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  .item-container {
+    padding: 0 20px;
+  }
+
+  .checkout-container {
+    padding: 0 150px;
+  }
+
+
+  .add-to-cart-button {
+    background-color: orange;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+  }

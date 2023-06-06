@@ -132,3 +132,10 @@
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
 }
+.carousel {
+    display: hidden;
+}
+
+/* .thumbs-wrapper axis-vertical {
+    display: hidden;
+} */

@@ -1,23 +1,18 @@
+.items-container {
+  background-color: #beb8b8;
+  position: relative;
+  top: 90px;
+  overflow-y: scroll;
+}
 
-  .items-container {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 90px;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-  }
+.items-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
-  .itemslist {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .item {
-    margin-bottom: 20px;
-    padding: 40px;
-    width: 100%;
-  }
+.item {
+  margin-bottom: 20px;
+  padding: 40px;
+  width: 100%;
+}
