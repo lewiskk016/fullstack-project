@@ -9,6 +9,7 @@ gem "rails", "~> 7.0.5"
 gem "sassc"
 gem "bcrypt"
 gem "jbuilder"
+gem "faker"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -43,7 +44,6 @@ gem "rack-cors"
 
 gem "bcrypt"
 gem "jbuilder"
-gem "faker"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
