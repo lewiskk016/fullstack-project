@@ -114,10 +114,15 @@ ApplicationRecord.transaction do
     )
 
     item5 = Item.create!(
-      name: "Colorful Bird Feeder",
+      name: "Hanizi Wild Bird Feeders for Outside, Hanging Bird Feeder Squirrel Proof, Outdoor Birds Feeders Wild Bird Seed, Garden Yard Decoration (Green)",
         category: "Feeder",
         price: 19.99,
-        description: "A beautiful bird feeder that attracts various bird species with its vibrant colors."
+        description:
+        " - Hanizi Bird Feeder: We focus on researching and developing wild bird feeders, squirrel proof birds feeders for outside hanging. Lightweight build, durable metal rope, and a twist lock that deters squirrels.
+        - Easy to Use: Open the lid, put the wild bird seeds, sunflower seeds for birds into the bird feeder, close the lid, and then hang the bird feeder under the eaves or in the garden.
+        - Large Capacity: 8.5 x 7.9 x 7.3 inches. Made of durable, high quality plastic. The clear plastic make it easy to inspect bird seed levels. Hold up to 47 oz bird seeds. - Large opening allows for easy refills and clean.
+        - Clever Design: Inclined roof to help prevent the seeds inside from getting wet. When the seeds are eaten, more seeds will naturally fill the tray. The tray has leaking holes to avoid water accumulation, keep the bird seeds dry.
+        - Ideal Choice: For your convenience and the health of your garden birds, choose Hanizi wild bird feeder that is easy to fill, empty, and clean. Check the birds feeders once a week and wash it regularly with mild soap and water solution. If you have any questions about bird feeders, please feel free to contact us."
     )
 
     item6 = Item.create!(
@@ -667,7 +672,7 @@ ApplicationRecord.transaction do
       description: "A variety pack of suet cakes in different flavors, providing birds with a high-energy treat during colder months."
     )
 
-    item83 = Item.create!(
+    item84 = Item.create!(
       name: "Hanging Bird Feeder",
       category: "Feeder",
       price: 19.99,

@@ -1,6 +1,6 @@
 
   .items-container {
-    background-color: rgba(250, 250, 193, 0.827);
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     position: fixed;

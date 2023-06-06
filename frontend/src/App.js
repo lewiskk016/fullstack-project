@@ -7,35 +7,7 @@ import Splash from "./components/MainPage/";
 import SubNavigation from "./components/SubNavigation";
 import ItemsIndex from "./components/ItemsIndex";
 import ItemShow from "./components/ItemShow";
-
-// function App() {
-//   return (
-//     <>
-//     <div className="app">
-//       <Navigation />
-//       <SubNavigation/>
-//         <Switch>
-//           <Route path="/login" >
-//             <LoginFormPage />
-//           </Route>
-//             <Route path="/signup">
-//             <SignupFormPage />
-//           </Route>
-//           <Route path="/items">
-//             <ItemsShow />
-//           </Route>
-//         </Switch>
-//           </div>
-//         <Splash />
-
-//     </>
-//   );
-// }
-
-
-// export default App;
-
-
+import ShoppingListIndex from "./components/ShoppingList";
 
 function App() {
   const location = useLocation();
@@ -57,9 +29,13 @@ function App() {
         <Route path="/items">
           <ItemsIndex />
         </Route>
+        <Route path="/shopping_lists/:itemId">
+          {/* <div>Hello From Shopping Lists</div> */}
+          <ShoppingListIndex />
+        </Route>
 
       </Switch>
-      {!location.pathname.includes("/items") && <Splash />}
+      {!location.pathname.includes("/items", "/shopping_lists") && <Splash />}
       {/* < Route path="/">
         <Splash />
         </Route> */}

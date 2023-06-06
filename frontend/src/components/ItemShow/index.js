@@ -1,9 +1,10 @@
 import {useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchItem, getItem } from '../../store/item';
+import { fetchItem} from '../../store/item';
 import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
+import { createShoppingListItem } from '../../store/shoppinglist';
 
 // debugger
 const ItemShow = () => {
@@ -25,15 +26,20 @@ const ItemShow = () => {
     }
 
     const handleAddToShoppingList = (e) => {
-        e.preventDefault()
-        if (!sessionUser){history.push(`/login`)
+        e.preventDefault();
+        if (!sessionUser) {
+          history.push(`/login`);
         } else {
-            const userId = sessionUser.id
-            // const userOrder = {itemQuantity, userId, itemId}
-            // dispatch(createShoppingListItem(userOrder));
-            // history.pushState(`/shoppinglist`)
+          const userId = sessionUser.id;
+          const userOrder = {
+            quantity: itemQuantity, // Use 'quantity' instead of 'itemQuantity'
+            user_id: userId, // Use 'user_id' instead of 'userId'
+            item_id: itemId, // Use 'item_id' instead of 'itemId'
+          };
+          dispatch(createShoppingListItem({ shopping_list: userOrder })); // Include 'shopping_list' key in the payload
+          history.push(`/shopping_lists`);
         }
-    }
+      };
 
     const updateSelector = (e) => {
         setItemQuantity(parseInt(e.currentTarget.value))
@@ -58,7 +64,6 @@ const ItemShow = () => {
                     <h3 className="in-stock">In Stock</h3>
                 </div>
                 <h3 className="item-description">{item.description}</h3>
-            </div>
 
                 <form onSubmit={handleAddToShoppingList} className="add-to-shopping-list">
                     <div className="quantity-container">
@@ -76,8 +81,11 @@ const ItemShow = () => {
                             <option value="10">10</option>
                         </select>
                     </div>
+                    <div className="add-to-shopping-list">
                     <button type="submit" className="add-to-shopping-list">Add to Cart</button>
+                    </div>
                 </form>
+            </div>
 
 
             <div className="reviews-container">

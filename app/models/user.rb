@@ -25,6 +25,11 @@ class User < ApplicationRecord
       self.session_token
     end
 
+    has_many :shopping_lists,
+    foreign_key: :user_id,
+    class_name: :ShoppingList,
+    dependent: :destroy
+
     private
 
     def generate_unique_session_token
