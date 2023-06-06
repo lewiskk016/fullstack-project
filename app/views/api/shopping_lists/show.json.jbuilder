@@ -1,3 +1,1 @@
-json.extract! @shopping_list, :id, :quantity, :user_id, :item_id
-
-
+json.extract! @shopping_list, :quantity, :user_id, :item_id

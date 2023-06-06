@@ -23,6 +23,9 @@ class Api::ShoppingListsController < ApplicationController
     #         render json: @shopping_list.errors.full_messages, status: 422
     #     end
     # end
+    def show
+        @shopping_list = ShoppingList.find_by(id: params[:id])
+    end
 
     def update
         @shopping_list = ShoppingList.find_by(id: params[:id])
@@ -45,7 +48,6 @@ class Api::ShoppingListsController < ApplicationController
     end
 
     def shopping_list_params
-        params.require(:shopping_list).permit(:quantity, :user_id, :item_id)
-      end
-
+        params.require(:shopping_list).permit( :user_id, :item_id, :quantity)
+    end
 end

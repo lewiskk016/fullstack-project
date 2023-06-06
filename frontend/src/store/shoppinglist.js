@@ -30,14 +30,10 @@ export const getShoppingListItems = state => {
     return state?.shoppingListItems? Object.values(state.shoppingListItems) : [];
 }
 
-debugger
 export const fetchAllShoppingListItems = () => async(dispatch) => {
     const response = await csrfFetch('/api/shopping_lists');
-    debugger
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
-      debugger
       dispatch(retrieveShoppingListItems(data.shoppingListItems));
       dispatch(retrieveItems(data.items));
     }
@@ -53,7 +49,6 @@ export const fetchAllShoppingListItems = () => async(dispatch) => {
     };
 
 export const createShoppingListItem = (shoppingListItem) => async (dispatch) => {
-    debugger
     const response = await csrfFetch('/api/shopping_lists', {
         method: 'POST',
         headers: {
@@ -61,10 +56,8 @@ export const createShoppingListItem = (shoppingListItem) => async (dispatch) => 
         },
         body: JSON.stringify(shoppingListItem)
     });
-    debugger
     if (response.ok) {
         const data = await response.json();
-        debugger
         dispatch(retrieveShoppingListItem(data.shoppingListItem));
         dispatch(retrieveItem(data.item));
     }

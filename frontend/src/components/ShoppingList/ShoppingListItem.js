@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
+import {getItem} from "../../store/item";
 import { useEffect, useState } from "react";
 import { updateShoppingListItem, deleteShoppingListItem } from "../../store/shoppinglist";
 
 const ShoppingListItem = ({ shoppingListItem }) => {
+    const item = useSelector(getItem(shoppingListItem.itemId));
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(shoppingListItem.quantity);
     const [showEditForm, setShowEditForm] = useState(false);
@@ -11,6 +13,10 @@ const ShoppingListItem = ({ shoppingListItem }) => {
     const [showEditButton, setShowEditButton] = useState(true);
 
     const sessionUser = useSelector((state) => state.session.user);
+
+    if (!item) {
+        return null;
+    }
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -32,28 +38,30 @@ const ShoppingListItem = ({ shoppingListItem }) => {
         setShowEditButton(true);
     }
 
-    useEffect(() => {
-        if (sessionUser) {
-            if (sessionUser.id !== shoppingListItem.user_id) {
-                setShowDeleteButton(false);
-                setShowEditButton(false);
-            }
-        }
-    }
+    // useEffect(() => {
+    //     if (sessionUser) {
+    //             setShowDeleteButton(false);
+    //             setShowEditButton(false);
+    //         }}, [sessionUser])
 
-    )
+
+    // useEffect(() => {
+    //     setShowDeleteButton(true);
+    //     setShowEditButton(true);
+    // }, [sessionUser])
+
 
     return (
         <div className="shopping-list-item-container">
             <div className="shopping-list-item">
                 <div className="shopping-list-item-image">
-                    <img className="shopping-list-item-image" src={shoppingListItem.item.photoUrl} alt="" />
+                    {/* <img className="shopping-list-item-image" src={shoppingListItem.photoUrl} alt="" /> */}
                 </div>
                 <div className="shopping-list-item-info">
-                    <div className="shopping-list-item-name">{shoppingListItem.item.name}</div>
-                    <div className="shopping-list-item-price">{shoppingListItem.item.price}</div>
+                    <div className="shopping-list-item-name">{shoppingListItem.name}</div>
+                    <div className="shopping-list-item-price">{shoppingListItem.price}</div>
                     <div className="shopping-list-item-quantity">Quantity: {shoppingListItem.quantity}</div>
-                    <div className="shopping-list-item-total-price">Total Price: {shoppingListItem.item.price * shoppingListItem.quantity}</div>
+                    <div className="shopping-list-item-total-price">Total Price: {shoppingListItem.price * shoppingListItem.quantity}</div>
                 </div>
                 <div className="shopping-list-item-buttons">
                     {showEditButton && (
@@ -84,4 +92,4 @@ const ShoppingListItem = ({ shoppingListItem }) => {
     )
 }
 
-export default ShoppingListItem;
+// export default ShoppingListItem;

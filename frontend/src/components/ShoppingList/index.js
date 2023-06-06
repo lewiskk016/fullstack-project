@@ -8,7 +8,6 @@
 
 
 // const ShoppingListIndex = () => {
-//     console.log("ShoppingListIndex is running")
 //     const dispatch = useDispatch();
 //     const shoppingListItems = useSelector(state => state.shoppingListItems);
 //     // const items = useSelector(state => state.items);
@@ -16,7 +15,6 @@
 
 
 //     useEffect(() => {
-//         console.log("useEffect is running")
 //         dispatch(fetchAllShoppingListItems());
 //     }, [dispatch]);
 

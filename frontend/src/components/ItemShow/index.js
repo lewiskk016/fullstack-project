@@ -6,7 +6,6 @@ import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
 import { createShoppingListItem } from '../../store/shoppinglist';
 
-// debugger
 const ItemShow = () => {
     const { itemId } = useParams();
     const dispatch = useDispatch();
@@ -17,7 +16,6 @@ const ItemShow = () => {
 
 
     useEffect(() => {
-        console.log("Dispatching fetchItem");
         dispatch(fetchItem(itemId));
     }, [dispatch, itemId]);
 

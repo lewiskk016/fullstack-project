@@ -3,19 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems} from '../../store/item';
 import './ItemsIndex.css';
 
-// debugger
 // const ItemsIndex = () => {
 //   const dispatch = useDispatch();
 //   const items = useSelector(state => Object.values(state.items));
 
-//   // debugger
 //   useEffect(() => {
-//     console.log("Dispatching getItems");
 //     dispatch(fetchItems());
 //   }, [dispatch]);
 
-//   // debugger
-//   // console.log("Items:", items);
 
 //   const renderItems = () => {
 //     const itemsPerRow = 3;
@@ -106,7 +101,6 @@ const ItemsIndex = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
-  console.log("Fetching Items:", items);
 
   return (
     <div className="items-container">
