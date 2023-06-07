@@ -7,19 +7,21 @@ export const RETRIEVE_SHOPPING_LIST_ITEM = 'RETRIEVE_SHOPPING_LIST_ITEM';
 
 export const REMOVE_SHOPPING_LIST_ITEM = 'REMOVE_SHOPPING_LIST_ITEM';
 
-const retrieveShoppingListItem = (shoppingListItem) => ({
+export const REMOVE_SHOPPING_LIST_ITEMS = 'REMOVE_SHOPPING_LIST_ITEMS'
+
+const retrieveShoppingListItem = (itemId, quantity) => ({
     type: RETRIEVE_SHOPPING_LIST_ITEM,
-    shoppingListItem
+    payload: {itemId, quantity}
 });
 
-const retrieveShoppingListItems = (shoppingListItems) => ({
+const retrieveShoppingListItems = (itemIds) => ({
     type: RETRIEVE_SHOPPING_LIST_ITEMS,
-    shoppingListItems
+    itemIds
 });
 
-const removeShoppingListItem = (shoppingListItemId) => ({
+const removeShoppingListItem = (itemId) => ({
     type: REMOVE_SHOPPING_LIST_ITEM,
-    shoppingListItemId
+    itemId
 });
 
 export const getShoppingListItem = (shoppingListItemId) => state => {
@@ -30,12 +32,12 @@ export const getShoppingListItems = state => {
     return state?.shoppingListItems? Object.values(state.shoppingListItems) : [];
 }
 
-export const fetchAllShoppingListItems = () => async(dispatch) => {
+export const fetchShoppingCart = () => async (dispatch) => {
     const response = await csrfFetch('/api/shopping_lists');
     if (response.ok) {
       const data = await response.json();
-      dispatch(retrieveShoppingListItems(data.shoppingListItems));
-      dispatch(retrieveItems(data.items));
+      dispatch(retrieveShoppingListItems(data));
+    //   dispatch(retrieveItems(data.items));
     }
   };
 
@@ -44,61 +46,72 @@ export const fetchAllShoppingListItems = () => async(dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(retrieveShoppingListItem(data.shoppingListItem));
-        dispatch(retrieveItem(data.item));
+        // dispatch(retrieveItem(data.item));
     }
     };
 
-export const createShoppingListItem = (shoppingListItem) => async (dispatch) => {
+export const createShoppingListItem = (userId, itemId, quantity) => async (dispatch) => {
+    // debugger
     const response = await csrfFetch('/api/shopping_lists', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(shoppingListItem)
+        body: JSON.stringify({userId, itemId, quantity})
     });
     if (response.ok) {
+        // debugger
         const data = await response.json();
-        dispatch(retrieveShoppingListItem(data.shoppingListItem));
-        dispatch(retrieveItem(data.item));
+        // debugger
+        dispatch(retrieveShoppingListItem(data.itemId, data.quantity));
+        // dispatch(retrieveItem(data.item));
     }
 }
 
 
-    export const updateShoppingListItem = (shoppingListItem) => async (dispatch) => {
-        const response = await csrfFetch(`/api/shopping_lists/${shoppingListItem.id}`, {
+    export const updateShoppingListItem = (userId, itemId, quantity) => async (dispatch) => {
+        const response = await csrfFetch('/api/shopping_lists', {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(shoppingListItem)
+            body: JSON.stringify(userId, itemId, quantity)
         });
 
         if (response.ok) {
             const data = await response.json();
-            dispatch(retrieveShoppingListItem(data.shoppingListItem));
-            dispatch(retrieveItem(data.item));
+            dispatch(retrieveShoppingListItem(data.itemId, data.quantity));
+            // dispatch(retrieveItem(data.item));
         }
     }
 
-    export const deleteShoppingListItem = (shoppingListItemId) => async (dispatch) => {
-        const response = await csrfFetch(`/api/shopping_lists/${shoppingListItemId}`, {
-            method: 'DELETE'
+    export const deleteShoppingListItem = (userId, itemId) => async (dispatch) => {
+        const response = await csrfFetch(`/api/shopping_lists/${itemId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userId, itemId)
         });
 
         if (response.ok) {
-            dispatch(removeShoppingListItem(shoppingListItemId));
+            dispatch(removeShoppingListItem(itemId));
         }
     }
 
     // const initialState = {};
 
     const shoppingListReducer = (state = {}, action) => {
+        // debugger
         switch(action.type) {
             case RETRIEVE_SHOPPING_LIST_ITEMS:
+                // debugger
                 return {...state, ...action.shoppingListItems};
             case RETRIEVE_SHOPPING_LIST_ITEM:
+                // debugger
                 return {...state, [action.shoppingListItem.id]: action.shoppingListItem};
             case REMOVE_SHOPPING_LIST_ITEM:
+                // debugger
                 const newState = {...state};
                 delete newState[action.shoppingListItemId];
                 return newState;

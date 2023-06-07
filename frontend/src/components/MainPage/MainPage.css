@@ -10,6 +10,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
+    /* display: none; */
 }
 
 .splash-container2 {
@@ -21,7 +22,7 @@
 
 .splash-container3 {
     position: relative;
-    /* z-index: 1; */
+    z-index: 1;
     width: 100%;
     height: 60%;
 }
@@ -133,9 +134,8 @@
     color: #fff;
 }
 .carousel {
-    display: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
-
-/* .thumbs-wrapper axis-vertical {
-    display: hidden;
-} */

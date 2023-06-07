@@ -1,150 +1,111 @@
-/* .item-show-container {
-    display: flex;
-    align-items: flex-start;
-}
-
-.item-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.name {
-    font-size: 30px;
-    font: "Amazon Ember", sans-serif;
-    margin: 20px;
-    padding: 10px;
-}
-
-.rating-container {
-    display: flex;
-    margin: 30px;
-}
-
-.rating-stars {
-    margin: 10px;
-    display: flex;
-}
-
-.item-price {
-    font-size: 15px;
-    margin: 20px;
-    align-self: flex-end;
-}
-
-.add-to-shopping-list {
-   display: flex;
-    justify-content: flex-end;
-}
-
-.reviews-container {
-    display: flex;
-    flex-direction: column;
-    margin: 30px;
-    padding: 30px;
-} */
-
-
-
-
-
-
-
-
-
-/* .item-show-container {
-    align-items: flex-start;
-    margin-top: 100px;
+  #rightcolumn {
+    margin-top: 120px;
+    margin-right: 40px;
+    float: right;
+    width: 244px;
+    display: block;
   }
 
-  .item-container {
-    position: relative;
-    width: 66.66%;
-  }
-
-  .checkout-container {
-    width: 33.33%;
-    margin-left: 20px;
-  }
-
-  .name {
-    font-size: 30px;
-    font: "Amazon Ember", sans-serif;
-    margin: 20px;
-    padding: 10px;
-  }
-
-  .rating-container {
-    margin: 30px;
-  }
-
-  .rating-stars {
-    margin: 10px;
-  }
-
-  .item-price {
-    font-size: 15px;
-    margin: 20px;
-    align-self: flex-end;
-  }
-
-  .add-to-shopping-list {
-    justify-content: flex-end;
-  }
-
-  .reviews-container {
-    flex-direction: column;
-    margin: 30px;
-    padding: 30px;
-  }
-
-
-
-  .add-to-cart-button {
-    background-color: orange;
-    color: white;
-    padding: 8px 16px;
+  #prime {
+    margin-bottom: 10px;
+    background-color: rbb(246, 246, 246);
+    border: 1px solid rgb(221, 221, 221);
     font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
+    line-height: 20px;
+    margin-right: 10px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    /* margin: 14px -40px; */
+    display: table;
+    padding: 2px 10px;
+    }
 
-  .price-and-button {
-    position: relative;
-  } */
+    /* #buybox {
+        box-sizing: border-box;
+        display: table;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-right: 10px;
+        padding: 2px 10px;
+    } */
 
-
-
-
-  .item-show-container {
-    display: flex;
-    align-items: flex-start;
-    padding-top: 200px;
-  }
-
-  .column {
-    flex-basis: 33.33%;
-  }
-
-  .image {
-    width: 100%;
-  }
-
-  .item-container {
-    padding: 0 20px;
-  }
-
-  .checkout-container {
-    padding: 0 150px;
-  }
+    #buybox {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        background-color: rbb(246, 246, 246);
+        border: 1px solid rgb(221, 221, 221);
+        font-size: 14px;
+        line-height: 20px;
+        margin-right: 10px;
+        font-family: "Amazon Ember", Arial, sans-serif;
+    /* margin: 14px -40px; */
+        display: table;
+        padding: 2px 10px;
+    }
 
 
-  .add-to-cart-button {
-    background-color: orange;
-    color: white;
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
+    .priceblock_ourmessage1 {
+        margin-top: 10px;
+        font-weight: 700;
+        box-sizing: border-box;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .priceblock_ourprice {
+        font-weight: 700;
+        box-sizing: border-box;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        font-size: 18px;
+        line-height: 30px;
+        color: rgba(153, 13, 13, 0.917);
+    }
+
+    .deliverymessage1 {
+        font-weight: 700;
+        box-sizing: border-box;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        color: blue;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .instock {
+        font-weight: 700;
+        box-sizing: border-box;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        color: green;
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .add-to-cart-button {
+        width: 100%;
+        display: block;
+        overflow: hidden;
+        height: 30px;
+        background-color: #fcd200;
+        color: white;
+        padding: 8px 16px;
+        font-size: 14px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 10px;
+        font: "Amazon Ember", Arial, sans-serif;
+        color: black;
+        font-weight: 700;
+      }
+
+    .quantity-selector {
+        border-radius: 10px;
+        border: 1px solid rgb(221, 221, 221);
+        background-color: rgb(255, 255, 255);
+        box-sizing: border-box;
+        display: inline-block;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0px;
+        padding: 0px;
+        width: 50px;
+    }

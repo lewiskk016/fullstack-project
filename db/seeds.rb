@@ -86,7 +86,8 @@ ApplicationRecord.transaction do
 
 
     item1 = Item.create!(
-      name: "Bird Seed",
+      name: "Kaytee Wild Bird Food 5 Pounds
+      ",
         category: "Seed",
         price: 9.99,
         description: "A bag of bird seed that can be used to fill bird feeders."

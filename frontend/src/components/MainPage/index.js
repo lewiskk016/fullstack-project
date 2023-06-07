@@ -3,7 +3,6 @@ import './MainPage.css'
 import Splash2 from '../../Images/splash2.jpg'
 import Splash3 from '../../Images/binoc.jpg'
 import Splash4 from '../../Images/birdfeeder.jpg'
-// import Smile from '../../Images/welcome-amazon-smile.jpg'
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -11,8 +10,6 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const SplashPage = () => {
     return (
         <div className="splash-page">
-            {/* <h1 className="splash-title">There's nothing wrong with staring...
-            </h1> */}
             <Carousel autoPlay interval={2000} infiniteLoop>
             <div className="splash-container">
                 <img className="splash-image" src={Splash} alt="splash" />
@@ -31,10 +28,8 @@ const SplashPage = () => {
                 <h3 className="splash-text4">Shop Our Latest Bird Feeders</h3>
             </div>
             </Carousel>
-            {/* <h2 className="sub-splash-title">With watching</h2> */}
        </div>
     )
 }
-
 
 export default SplashPage;

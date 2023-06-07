@@ -101,6 +101,7 @@ const ItemsIndex = () => {
     dispatch(fetchItems());
   }, [dispatch]);
 
+  console.log("Fetching Items:", items);
 
   return (
     <div className="items-container">

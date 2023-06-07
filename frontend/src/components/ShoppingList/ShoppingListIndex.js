@@ -1,44 +1,55 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { fetchAllShoppingListItems } from "../../store/shoppinglist";
+import { fetchShoppingCart} from "../../store/shoppinglist";
 // import ShoppingListItem from "./ShoppingListItem";
 import { deleteShoppingListItem } from "../../store/shoppinglist";
 // import { ItemShow } from "../ItemShow";
 
 const ShoppingListIndex = () => {
+    // debugger
     const dispatch = useDispatch();
     const history = useHistory();
     const items = useSelector((state) => state.items);
     const sessionUser = useSelector((state) => state.session.user);
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantity, setTotalQuantity] = useState(0);
-    const [totalItems, setTotalItems] = useState(0);
-    const [totalItemsPrice, setTotalItemsPrice] = useState(0);
+    // const [totalItems, setTotalItems] = useState(0);
+    // const [totalItemsPrice, setTotalItemsPrice] = useState(0);
 
     useEffect(() => {
-        dispatch(fetchAllShoppingListItems());
+        // debugger
+        dispatch(fetchShoppingCart());
     }, [dispatch]);
 
     useEffect(() => {
-        let total = 0;
+        // debugger
+        // let total = 0;
         let quantity = 0;
-        let itemsCount = 0;
-        let itemsPrice = 0;
-
-        if (items) {
+        // let itemsCount = 0;
+        let price = 0;
+        // debugger
         Object.values(items).forEach((item) => {
-            total += item.price * item.quantity;
             quantity += item.quantity;
-            itemsCount += 1;
-            itemsPrice += item.price;
+            price += item.price * item.quantity;
+            // debugger
         });
-    }
-        setTotalPrice(total);
-        setTotalQuantity(quantity);
-        setTotalItems(itemsCount);
-        setTotalItemsPrice(itemsPrice);
+          setTotalPrice(price);
+            setTotalQuantity(quantity);
+            // debugger
     }, [items]);
+
+        //     total += item.price * itemsCount;
+        //     quantity += item.quantity; // nothing
+        //     itemsCount += 1;
+        //     itemsPrice += item.price;
+        // });
+    // }
+    //     setTotalPrice(total);
+    //     setTotalQuantity(quantity);
+    //     // setTotalItems(itemsCount);
+    //     // setTotalItemsPrice(itemsPrice);
+    // }, [items]);
 
     const handleDelete = (e) => {
         e.preventDefault();
@@ -52,7 +63,7 @@ const ShoppingListIndex = () => {
         } else {
             history.push(`/checkout`);
         }
-    }
+    };
 
     return (
         <div className="shopping-list-container">
@@ -67,7 +78,7 @@ const ShoppingListIndex = () => {
             </div>
             <div className="shopping-list-footer">
                 <div className="shopping-list-footer-left">
-                    <h2 className="shopping-list-footer-left-title">Subtotal ({totalItems} items):</h2>
+                    <h2 className="shopping-list-footer-left-title">Subtotal ({totalQuantity} items):</h2>
                     <h2 className="shopping-list-footer-left-price">${totalPrice}</h2>
                 </div>
                 <div className="shopping-list-footer-right">

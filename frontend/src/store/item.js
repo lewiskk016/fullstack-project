@@ -126,6 +126,8 @@ export const fetchItem = (itemId) => async (dispatch) => {
 
 
 const itemsReducer = (state = {}, action) => {
+  // Object.freeze(state)
+  // let newState = {...state}
   switch (action.type) {
     case RETRIEVE_ITEMS:
         return {...state, ...action.items};
@@ -135,7 +137,7 @@ const itemsReducer = (state = {}, action) => {
                } else {
                 return state;
                }
-        return { ...state, [action.item.id]: action.item };
+        // return { ...state, [action.item.id]: action.item };
 
     default:
       return state;
