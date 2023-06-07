@@ -60,7 +60,6 @@
         font-size: 18px;
         line-height: 30px;
         color: rgba(153, 13, 13, 0.917);
-
     }
 
     .deliverymessage1 {
@@ -111,3 +110,86 @@
         padding: 0px;
         width: 50px;
     }
+
+.middlecolumn {
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 46.5%;
+    margin-right: 400px;
+    box-sizing: border-box;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.name {
+    box-sizing: border-box;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 400;
+
+}
+
+.ourprice {
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: 700;
+    color: blue
+}
+
+.aboutitem {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    padding-bottom: 4px;
+    text-rendering: optimizeLegibility;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.leftcolumn {
+    float: left;
+    position: absolute;
+    margin-top: 120px;
+    width: 200px;
+    height: 200px;
+    margin-left: 120px;
+    z-index: -1;
+}
+
+.item-image {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    display: inline-block;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.reviews {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: rgb(16, 16, 17);
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.reviewbox {
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(16, 16, 17);
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.star {
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  .filled {
+    color: gold;
+  }

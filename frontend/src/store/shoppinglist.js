@@ -2,11 +2,8 @@ import csrfFetch from './csrf';
 import { retrieveItem, retrieveItems } from './item';
 
 export const RETRIEVE_SHOPPING_LIST_ITEMS = 'RETRIEVE_SHOPPING_LIST_ITEMS';
-
 export const RETRIEVE_SHOPPING_LIST_ITEM = 'RETRIEVE_SHOPPING_LIST_ITEM';
-
 export const REMOVE_SHOPPING_LIST_ITEM = 'REMOVE_SHOPPING_LIST_ITEM';
-
 export const REMOVE_SHOPPING_LIST_ITEMS = 'REMOVE_SHOPPING_LIST_ITEMS'
 
 const retrieveShoppingListItem = (itemId, quantity) =>({
@@ -21,16 +18,21 @@ const retrieveShoppingListItems = (itemIds) => ({
 
 const removeShoppingListItem = (itemId) => ({
     type: REMOVE_SHOPPING_LIST_ITEM,
-    itemId
+     itemId
 });
 
-export const getShoppingListItem = (shoppingListItemId) => state => {
-    return state?.shoppingListItems? state.shoppingListItems[shoppingListItemId] : null;
-}
+const removeShoppingListItems = (itIds) => ({
+    type: REMOVE_SHOPPING_LIST_ITEMS,
+    itIds
+});
 
-export const getShoppingListItems = state => {
-    return state?.shoppingListItems? Object.values(state.shoppingListItems) : [];
-}
+// export const getShoppingListItem = (shoppingListItemId) => state => {
+//     return state?.shoppingListItems? state.shoppingListItems[shoppingListItemId] : null;
+// }
+
+// export const getShoppingListItems = state => {
+//     return state?.shoppingListItems? Object.values(state.shoppingListItems) : [];
+// }
 
 export const fetchShoppingCart = () => async (dispatch) => {
     const response = await csrfFetch('/api/shopping_lists');
@@ -45,12 +47,12 @@ export const fetchShoppingCart = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(retrieveShoppingListItem(data.shoppingListItem));
-        // dispatch(retrieveItem(data.item));
+        dispatch(retrieveItem(data.item));
     }
     };
 
 export const createShoppingListItem = (userId, itemId, quantity) => async (dispatch) => {
-    // debugger
+    debugger
     const response = await csrfFetch('/api/shopping_lists', {
         method: 'POST',
         headers: {
@@ -97,19 +99,18 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
         }
     }
 
-    // const initialState = {};
 
     const shoppingListReducer = (state = {}, action) => {
-        // debugger
+        debugger
         switch(action.type) {
             case RETRIEVE_SHOPPING_LIST_ITEMS:
-                // debugger
+                debugger
                 return {...state, ...action.shoppingListItems};
             case RETRIEVE_SHOPPING_LIST_ITEM:
-                // debugger
+                debugger
                 return {...state, [action.shoppingListItem.id]: action.shoppingListItem};
             case REMOVE_SHOPPING_LIST_ITEM:
-                // debugger
+                debugger
                 const newState = {...state};
                 delete newState[action.shoppingListItemId];
                 return newState;

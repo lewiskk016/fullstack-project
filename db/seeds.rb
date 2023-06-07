@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do
+  require "open-uri"
+# ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
@@ -82,9 +83,6 @@ ApplicationRecord.transaction do
     # end
 
 
-
-
-
     item1 = Item.create!(
       name: "Kaytee Wild Bird Food 5 Pounds
       ",
@@ -92,6 +90,13 @@ ApplicationRecord.transaction do
         price: 9.99,
         description: "A bag of bird seed that can be used to fill bird feeders."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdseed1.jpg')
+    item_test = item1.photo.attach(io: item, filename: 'item1.jpeg')
+    # item1.photo.attach(
+    #   io: URI.open("https://aa-aveson-dev.s3.amazonaws.com/item1.jpg"),
+    #   filename: "birdseed1.jpg"
+    # )
 
     item2 = Item.create!(
       name: "Bird Bath",
@@ -690,4 +695,4 @@ ApplicationRecord.transaction do
 
 
     puts "Done!"
-  end
+  # end

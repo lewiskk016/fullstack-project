@@ -92,4 +92,4 @@ const ShoppingListItem = ({ shoppingListItem }) => {
     )
 }
 
-// export default ShoppingListItem;
+export default ShoppingListItem;

@@ -16,5 +16,9 @@ class Api::ItemsController < ApplicationController
       end
     end
 
+    def search
+      @items = Item.where("lower(name) LIKE?", "%#{params[:q]}%")
+      render :search
+  end
 
   end

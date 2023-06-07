@@ -1,6 +1,7 @@
 items = []
 
 json.shoppingLists do
+  debugger
     if @shopping_lists
       @shopping_lists.each do |shopping_list|
         items.push(shopping_list.item)
@@ -22,3 +23,8 @@ json.shoppingLists do
 
 
   # json.extract! @shopping_lists, :user_id, :item_id, :quantity
+# json.array! @shopping_lists do |shopping_list|
+#   json.quantity shopping_list.quantity
+#   json.id shopping_list.item.id
+#   json.extract! shopping_list.item, :name, :category, :description, :price
+# end
