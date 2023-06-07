@@ -1,32 +1,40 @@
 class Api::ShoppingListsController < ApplicationController
     def index
         @shopping_lists = current_user.shopping_lists
+        debugger
         render :index
     end
 
 
-    def create
-        debugger
-        @shopping_list = ShoppingList.find_by(item_id: shopping_list_params[:item_id], user_id: current_user.id)
-        if @shopping_list
-            @shopping_list.quantity += shopping_list_params[:quantity].to_i
-            @shopping_list.save
-        else
-            debugger
-            @shopping_list = ShoppingList.create(shopping_list_params)
-        end
-        render :show
-    end
-    #     @shopping_list = ShoppingList.new(shopping_list_params)
-    #     # if @shopping_list.save!
-    #     if @shopping_list
-    #         render :show
-    #     else
-    #         render json: @shopping_list.errors.full_messages, status: 422
-    #     end
+
+    # def create
+    #   @shopping_list = ShoppingList.find_by(user_id: params[:user_id], item_id: params[:item_id])
+    #   @shopping_list.quantity = params[:quantity].to_i
+    #   unless @shopping_list.save
+    #     render json: { errors: @shopping_list.errors.full_messages }, status: :unprocessable_entity
+    #     return
+    #   end
+
+    #   @user = User.find(params[:user_id])
+    #   @shopping_list_items = ShoppingList.includes(:item).where(user_id: @user.id)
+    #   render :show
     # end
-    def show
-        @shopping_list = ShoppingList.find_by(id: params[:id])
+
+    def create
+      @shopping_list = ShoppingList.find_by(user_id: params[:user_id], item_id: params[:item_id])
+      unless @shopping_list
+        @shopping_list = ShoppingList.new(user_id: params[:user_id], item_id: params[:item_id])
+      end
+
+      @shopping_list.quantity = params[:quantity].to_i
+
+      if @shopping_list.save
+        @user = User.find(params[:user_id])
+        @shopping_list_items = ShoppingList.includes(:item).where(user_id: @user.id)
+        render :show
+      else
+        render json: { errors: @shopping_list.errors.full_messages }, status: :unprocessable_entity
+      end
     end
 
     def update

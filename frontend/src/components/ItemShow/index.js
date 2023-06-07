@@ -14,6 +14,7 @@ const ItemShow = () => {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
     const [reviewRating , setReviewRating] = useState(0)
+    const userId = useSelector(state => state.session.user?.id)
 
 
     useEffect(() => {
@@ -21,28 +22,30 @@ const ItemShow = () => {
         dispatch(fetchItem(itemId));
     }, [dispatch, itemId]);
 
-    if (!item) {
-        return null;
-    }
+
 
     const handleAddToShoppingList = (e) => {
         e.preventDefault();
         if (!sessionUser) {
           history.push(`/login`);
         } else {
-          const userId = sessionUser.id;
-          const userOrder = {
-            quantity: itemQuantity,
-            user_id: userId,
-            item_id: itemId,
-          };
+        //   const userId = sessionUser.id;
+        //   const userOrder = {
+        //     user_id: userId,
+        //     item_id: itemId,
+        //     quantity: itemQuantity
+        //   };
           debugger
-          dispatch(createShoppingListItem({
-            shopping_list: userOrder }));
-            debugger
-          history.push('/shopping_lists');
+          dispatch(createShoppingListItem(userId, itemId, itemQuantity))
+        //   {
+        //     shopping_list: userOrder }));
+            history.push('/shopping_lists');
         }
       };
+
+      if (!item) {
+        return null;
+    }
 
     const updateSelector = (e) => {
         debugger
@@ -62,7 +65,7 @@ const ItemShow = () => {
                         <span className="bbop-content">
                             <b> Enjoy fast, FREE delivery, exclusive deals and award-winning Bird Products with Flyme </b>
                             <br />
-                            <span classname="bbop-content">
+                            <span className="bbop-content">
                                 Try Flyme free for 30 days
                                 <br />
                             </span>

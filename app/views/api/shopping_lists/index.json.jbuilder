@@ -4,6 +4,7 @@ json.shoppingLists do
   debugger
     if @shopping_lists
       @shopping_lists.each do |shopping_list|
+        debugger
         items.push(shopping_list.item)
         json.set! shopping_list.id do
           json.extract! shopping_list, :user_id, :item_id, :quantity
