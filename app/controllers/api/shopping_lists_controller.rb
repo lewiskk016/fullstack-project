@@ -6,11 +6,13 @@ class Api::ShoppingListsController < ApplicationController
 
 
     def create
+        debugger
         @shopping_list = ShoppingList.find_by(item_id: shopping_list_params[:item_id], user_id: current_user.id)
         if @shopping_list
             @shopping_list.quantity += shopping_list_params[:quantity].to_i
             @shopping_list.save
         else
+            debugger
             @shopping_list = ShoppingList.create(shopping_list_params)
         end
         render :show

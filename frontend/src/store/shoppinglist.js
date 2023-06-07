@@ -9,7 +9,7 @@ export const REMOVE_SHOPPING_LIST_ITEM = 'REMOVE_SHOPPING_LIST_ITEM';
 
 export const REMOVE_SHOPPING_LIST_ITEMS = 'REMOVE_SHOPPING_LIST_ITEMS'
 
-const retrieveShoppingListItem = (itemId, quantity) => ({
+const retrieveShoppingListItem = (itemId, quantity) =>({
     type: RETRIEVE_SHOPPING_LIST_ITEM,
     payload: {itemId, quantity}
 });
@@ -37,7 +37,6 @@ export const fetchShoppingCart = () => async (dispatch) => {
     if (response.ok) {
       const data = await response.json();
       dispatch(retrieveShoppingListItems(data));
-    //   dispatch(retrieveItems(data.items));
     }
   };
 
@@ -60,11 +59,10 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
         body: JSON.stringify({userId, itemId, quantity})
     });
     if (response.ok) {
-        // debugger
+        debugger
         const data = await response.json();
-        // debugger
+        debugger
         dispatch(retrieveShoppingListItem(data.itemId, data.quantity));
-        // dispatch(retrieveItem(data.item));
     }
 }
 

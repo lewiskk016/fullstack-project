@@ -16,6 +16,7 @@ const ItemShow = () => {
 
 
     useEffect(() => {
+        debugger
         dispatch(fetchItem(itemId));
     }, [dispatch, itemId]);
 
@@ -34,13 +35,18 @@ const ItemShow = () => {
             user_id: userId,
             item_id: itemId,
           };
-          dispatch(createShoppingListItem({ shopping_list: userOrder }));
+          debugger
+          dispatch(createShoppingListItem({
+            shopping_list: userOrder }));
+            debugger
           history.push('/shopping_lists');
         }
       };
 
     const updateSelector = (e) => {
+        debugger
         setItemQuantity(parseInt(e.currentTarget.value))
+        debugger
     }
 
     // return (
@@ -106,12 +112,14 @@ const ItemShow = () => {
                 <div id="prime" className="prime">
                     <div id="content-container" className="content-container">
                         <span className="bbop-content">
-                            <b>"Enjoy fast, FREE delivery, exclusive deals and award-winning Bird Products with Flyme"</b>
+                            <b> Enjoy fast, FREE delivery, exclusive deals and award-winning Bird Products with Flyme </b>
                             <br />
                             <span classname="bbop-content">
                                 Try Flyme free for 30 days
+                                <br />
                             </span>
-                            " and start saving today with "
+                                and start saving today with
+                                <br/>
                             <b> Fast, FREE Delivery</b>
 
                         </span>

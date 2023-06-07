@@ -7,40 +7,41 @@ import { deleteShoppingListItem } from "../../store/shoppinglist";
 // import { ItemShow } from "../ItemShow";
 
 const ShoppingListIndex = () => {
-    // debugger
+    debugger
     const dispatch = useDispatch();
     const history = useHistory();
     const items = useSelector((state) => state.items);
     const sessionUser = useSelector((state) => state.session.user);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantity, setTotalQuantity] = useState(0);
+    const [totalQuantity, setTotalQuantity] = useState(1);
     // const [totalItems, setTotalItems] = useState(0);
     // const [totalItemsPrice, setTotalItemsPrice] = useState(0);
 
     useEffect(() => {
-        // debugger
+        debugger
         dispatch(fetchShoppingCart());
     }, [dispatch]);
 
     useEffect(() => {
-        // debugger
+        debugger
         // let total = 0;
-        let quantity = 0;
+        let quantity = 1;
         // let itemsCount = 0;
         let price = 0;
-        // debugger
+        debugger
         Object.values(items).forEach((item) => {
-            quantity += item.quantity;
+            // quantity += shoppingLists.quantity;
+            debugger
             price += item.price * item.quantity;
-            // debugger
+            debugger
         });
           setTotalPrice(price);
             setTotalQuantity(quantity);
-            // debugger
+            debugger
     }, [items]);
 
         //     total += item.price * itemsCount;
-        //     quantity += item.quantity; // nothing
+            // quantity += item.quantity; // nothing
         //     itemsCount += 1;
         //     itemsPrice += item.price;
         // });
