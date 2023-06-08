@@ -16,6 +16,7 @@ const ShoppingListIndex = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const shoppingList = useSelector((state) => Object.values(state.shoppingList));
+    const products = useSelector((state) => state.shoppingList.products);
     const items = useSelector((state) => state.items);
     const shoppingListItems = useSelector((state) => state.shoppingList);
     // const userId = useSelector((state) => state.session.user?.id);
@@ -59,14 +60,14 @@ const ShoppingListIndex = () => {
 
 
 
-    const handleUpdate = async (itemId, quantity) => {
-      await dispatch(updateShoppingCart(itemId, quantity));
-  };
+  //   const handleUpdate = async (itemId, quantity) => {
+  //     await dispatch(updateShoppingCart(itemId, quantity));
+  // };
 
 
-  const handleDelete = async (itemId) => {
-    await dispatch(deleteShoppingListItem(itemId));
-  };
+  // const handleDelete = async (itemId) => {
+  //   await dispatch(deleteShoppingListItem(itemId));
+  // };
 
   return (
     <div className="shopping-list-container">
@@ -83,7 +84,7 @@ const ShoppingListIndex = () => {
 
       <div className="shopping-list-body">
         {Object.values(items).map((item) => (
-          <div key={item.itemId} className="shopping-list-item">
+          // <div key={item.itemId} className="shopping-list-item">
             <div className="shopping-list-item-left">
               {/* <div className="shopping-list-item-left-image">
                 <img src={item.image} alt={item.name} />
@@ -99,16 +100,16 @@ const ShoppingListIndex = () => {
                   Quantity: {item.quantity}
                 </div>
               </div>
-            </div>
-            <div className="shopping-list-item-right">
+            {/* </div> */}
+            {/* <div className="shopping-list-item-right">
               <input
 
                 type="number"
-                value={item.quantity}
-                onChange={(e) => handleUpdate(item.itemId, e.target.value)}
+                value={shoppingListItems.quantity}
+                onChange={(e) => handleUpdate(shoppingListItems.itemId, e.target.value)}
               />
-              <button onClick={() => handleDelete(item.itemId)}>Delete</button>
-            </div>
+              <button onClick={() => handleDelete(shoppingListItems.itemId)}>Delete</button>
+            </div> */}
           </div>
         ))}
       </div>
