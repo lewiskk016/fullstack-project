@@ -34,8 +34,9 @@ const ItemShow = () => {
         //     item_id: itemId,
         //     quantity: itemQuantity
         //   };
+        // dispatch(fetchShoppingCart())
           dispatch(createShoppingListItem(userId, itemId, itemQuantity))
-          .then(() => dispatch(fetchShoppingCart()))
+        //   .then(() => dispatch(fetchShoppingCart()))
         //   {
         //     shopping_list: userOrder }));
             history.push('/shopping_lists');
