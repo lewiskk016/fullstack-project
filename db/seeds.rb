@@ -91,8 +91,10 @@
         description: "A bag of bird seed that can be used to fill bird feeders."
     )
 
-    # item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdseed1.jpg')
-    # item_test = item1.photo.attach(io: item, filename: 'item1.jpeg')
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdseed1.jpg')
+    item_test = item1.photo.attach(io: item, filename: 'item1.jpeg')
+
+
     # item1.photo.attach(
     #   io: URI.open("https://aa-aveson-dev.s3.amazonaws.com/item1.jpg"),
     #   filename: "birdseed1.jpg"
@@ -105,8 +107,8 @@
         description: "A bird bath that provides birds with a place to drink and bathe."
     )
 
-    # item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbath1.jpeg')
-    # item_test = item2.photo.attach(io: item, filename: 'item2.jpeg')
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbath1.jpeg')
+    item_test = item2.photo.attach(io: item, filename: 'item2.jpeg')
 
     item3 = Item.create!(
       name: "Bird Watching Binoculars",
@@ -115,8 +117,8 @@
         description: "High-quality binoculars designed for bird watchers, allowing for clear and detailed bird observations."
     )
 
-    # item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/item3.jpeg')
-    # item_test = item3.photo.attach(io: item, filename: 'item3.jpeg')
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/item3.jpeg')
+    item_test = item3.photo.attach(io: item, filename: 'item3.jpeg')
 
     item4 = Item.create!(
       name: "Birdhouse with Perch",
@@ -125,8 +127,8 @@
         description: "A cozy birdhouse with a perch, providing birds with a comfortable place to nest."
     )
 
-    # item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdhouse4.jpeg')
-    # item_test = item4.photo.attach(io: item, filename: 'item4.jpeg')
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdhouse4.jpeg')
+    item_test = item4.photo.attach(io: item, filename: 'item4.jpeg')
 
     item5 = Item.create!(
       name: "Hanizi Wild Bird Feeders for Outside, Hanging Bird Feeder Squirrel Proof, Outdoor Birds Feeders Wild Bird Seed, Garden Yard Decoration (Green)",
@@ -140,8 +142,8 @@
         - Ideal Choice: For your convenience and the health of your garden birds, choose Hanizi wild bird feeder that is easy to fill, empty, and clean. Check the birds feeders once a week and wash it regularly with mild soap and water solution. If you have any questions about bird feeders, please feel free to contact us."
     )
 
-    # item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdfeeder05.jpeg')
-    # item_test = item5.photo.attach(io: item, filename: 'item5.jpeg')
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdfeeder05.jpeg')
+    item_test = item5.photo.attach(io: item, filename: 'item5.jpeg')
 
     item6 = Item.create!(
       name: "Bird Feeder",
@@ -150,12 +152,18 @@
         description: "A simple bird feeder that can be filled with bird seed."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/feeder08139.jpeg')
+    item_test = item6.photo.attach(io: item, filename: 'item6.jpeg')
+
     item7 = Item.create!(
       name: "Hummingbird Feeder",
       category: "Feeder",
       price: 24.99,
       description: "A hummingbird feeder that can be filled with hummingbird nectar."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/hummingbirdfeeder.jpeg')
+    item_test = item7.photo.attach(io: item, filename: 'item7.jpeg')
 
     item8 = Item.create!(
       name: "Woodpecker Bird Seed",
@@ -164,12 +172,18 @@
       description: "A bag of bird seed that can be used to fill bird feeders."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/woodpeckerfeeder.jpeg')
+    item_test = item8.photo.attach(io: item, filename: 'item8.jpeg')
+
     item9 = Item.create!(
       name: "Small Bird Bath",
       category: "Bath",
       price: 39.99,
       description: "A bird bath that provides small birds with a place to drink and bathe."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbath0608.jpeg')
+    item_test = item9.photo.attach(io: item, filename: 'item9.jpeg')
 
     item10 = Item.create!(
       name: "Entry Level Binoculars",
@@ -178,12 +192,19 @@
       description: "Binoculars designed for beginner bird watchers, allowing for clear and detailed bird observations."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbinoculars.jpeg')
+    item_test = item10.photo.attach(io: item, filename: 'item10.jpeg')
+
+
     item11 = Item.create!(
       name: "Birdhouse",
       category: "Houses",
       price: 19.99,
       description: "A cozy birdhouse, providing birds with a comfortable place to nest."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdhousethree.jpeg')
+    item_test = item11.photo.attach(io: item, filename: 'item11.jpeg')
 
     item12= Item.create!(
       name: "Bird Feeder",
@@ -192,12 +213,15 @@
       description: "A simple bird feeder that can be filled with bird seed."
     )
 
-    item13 = Item.create!(
-      name: "Premium Bird Feeder",
-      category: "Feeder",
-      price: 34.99,
-      description: "A high-quality bird feeder designed to attract a wide variety of bird species."
-    )
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdfeeder080147.jpeg')
+    item_test = item12.photo.attach(io: item, filename: 'item12.jpeg')
+
+    # item13 = Item.create!(
+    #   name: "Premium Bird Feeder",
+    #   category: "Feeder",
+    #   price: 34.99,
+    #   description: "A high-quality bird feeder designed to attract a wide variety of bird species."
+    # )
 
     item14 = Item.create!(
       name: "Squirrel-Proof Bird Feeder",
@@ -206,12 +230,20 @@
       description: "A bird feeder equipped with mechanisms to prevent squirrels from accessing the bird food."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/fancybirdfeeder.jpeg')
+    item_test = item14.photo.attach(io: item, filename: 'item14.jpeg')
+
+
     item15 = Item.create!(
       name: "Birdhouse Kit",
       category: "Houses",
       price: 24.99,
       description: "A DIY birdhouse kit that allows you to build and decorate your own birdhouse."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/fancyfeeder.jpeg')
+    item_test = item15.photo.attach(io: item, filename: 'item15.jpeg')
+
 
     item16 = Item.create!(
       name: "Cardinal Bird Seed",
@@ -220,12 +252,19 @@
       description: "A specialized blend of bird seed formulated to attract cardinal birds."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/cardinalbirdseed.jpeg')
+    item_test = item16.photo.attach(io: item, filename: 'item16.jpeg')
+
     item17 = Item.create!(
       name: "Large Bird Bath",
       category: "Bath",
       price: 59.99,
       description: "A spacious bird bath that accommodates multiple birds at once."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/largeebirdbath.jpeg')
+    item_test = item17.photo.attach(io: item, filename: 'item17.jpeg')
+
 
     item18 = Item.create!(
       name: "Compact Binoculars",
@@ -234,6 +273,9 @@
       description: "Lightweight and portable binoculars ideal for bird watching on the go."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbinoculars203.jpeg')
+    item_test = item18.photo.attach(io: item, filename: 'item18.jpeg')
+
     item19 = Item.create!(
       name: "Oriole Bird Feeder",
       category: "Feeder",
@@ -241,12 +283,19 @@
       description: "A specialized bird feeder designed to attract beautiful oriole birds."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/oriolefeeder.jpeg')
+    item_test = item19.photo.attach(io: item, filename: 'item19.jpeg')
+
     item20 = Item.create!(
       name: "Elegant Bird Bath",
       category: "Bath",
       price: 69.99,
       description: "An elegant and decorative bird bath made from durable materials."
     )
+
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/elegantbirdbath.jpeg')
+    item_test = item20.photo.attach(io: item, filename: 'item20.jpeg')
 
     # item21 = Item.create!(
     #   name: "Compact Spotting Scope",
@@ -669,12 +718,15 @@
     #   description: "Advanced binoculars equipped with night vision technology, allowing for bird observations in low-light or nighttime conditions."
     # )
 
-    # item81 = Item.create!(
-    #   name: "Bird Identification Book",
-    #   category: "Books",
-    #   price: 17.99,
-    #   description: "An illustrated bird identification book featuring detailed descriptions, images, and range maps for easy bird species identification."
-    # )
+    item81 = Item.create!(
+      name: "Bird Identification Book",
+      category: "Books",
+      price: 17.99,
+      description: "An illustrated bird identification book featuring detailed descriptions, images, and range maps for easy bird species identification."
+    )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbook.jpeg')
+    item_test = item81.photo.attach(io: item, filename: 'item81.jpeg')
 
     # item82 = Item.create!(
     #   name: "Platform Bird Feeder",

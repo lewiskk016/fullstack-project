@@ -195,3 +195,23 @@
   .filled {
     color: gold;
   }
+
+  .rating-stars {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .star-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .rating-label {
+   width: 100px;
+  }
+
+  .star-container {
+    display: flex;
+    align-items: center;
+  }

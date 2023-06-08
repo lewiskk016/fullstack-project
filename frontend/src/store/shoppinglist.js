@@ -1,5 +1,6 @@
 import csrfFetch from './csrf';
 import { retrieveItem } from './item';
+import {dispatch } from 'react-redux';
 
 export const RETRIEVE_SHOPPING_LIST_ITEM = 'RETRIEVE_SHOPPING_LIST_ITEM';
 export const RETRIEVE_SHOPPING_LIST_ITEMS = 'RETRIEVE_SHOPPING_LIST_ITEMS';
@@ -32,9 +33,10 @@ const removeShoppingListItems = (itIds) => ({
     itIds
 });
 
-const updateShoppingListItem = (itemId, quantity) => ({
+
+const updateShoppingListItem = ( itemId, quantity) => ({
     type: UPDATE_SHOPPING_LIST_ITEM,
-    payload: {itemId, quantity}
+    payload: { itemId, quantity}
 });
 
 export const getShoppingListItem = (shoppingListItemId) => state => {
@@ -82,29 +84,30 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
 }
 
 
-    export const updateShoppingCart = (userId, itemId, quantity) => async (dispatch) => {
-        const response = await csrfFetch('/api/shopping_lists', {
+    export const updateShoppingCart = (itemId, quantity) => async (dispatch) => {
+        const response = await csrfFetch(`/api/shopping_lists/${itemId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userId, itemId, quantity)
+            body: JSON.stringify({itemId, quantity})
         });
-
         if (response.ok) {
             const data = await response.json();
+            // dispatch(retrieveShoppingListItem(data.itemId, data.quantity))
+            // dispatch(updateShoppingListItem(data.quantity));
             dispatch(updateShoppingListItem(data.itemId, data.quantity));
             // dispatch(retrieveItem(data.item));
         }
     }
 
     export const deleteShoppingListItem = (userId, itemId) => async (dispatch) => {
-        const response = await csrfFetch('/api/shopping_lists', {
+        const response = await csrfFetch(`/api/shopping_lists/${itemId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userId, itemId)
+            body: JSON.stringify({userId, itemId})
         });
         if (response.ok) {
             dispatch(removeShoppingListItem(itemId));
@@ -125,8 +128,11 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
     }
 
 
-    const initialState = {};
+    // const initialState = {
+    //     itemIds: [],
+    // };
 
+    const initialState = {};
     const shoppingListReducer = (state = initialState, action) => {
         // Object.freeze(state);
         // nextState = {...state};
@@ -138,19 +144,57 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
                         [action.payload.itemId]: action.payload.quantity,
                         };
 
-            // case RETRIEVE_SHOPPING_LIST_ITEM:
-            //     return {...state, [action.payload.itemId]: action.payload.quantity};
-            //     // return { ...state, itemIds: [...state.itemIds, action.payload] };
             case RETRIEVE_SHOPPING_LIST_ITEMS:
-                // return {...state, ...action.shoppingListItems};
-                return {...state, itemIds: action.payload};
-            case REMOVE_SHOPPING_LIST_ITEM:
-                const newState = {...state};
-                delete newState[action.shoppingListItemId];
-                return newState;
+
+                return { ...state, itemIds: action.itemIds };
+
+                case REMOVE_SHOPPING_LIST_ITEM:
+                    const { [action.itemId]: removedItem, ...updatedState } = state;
+                    return updatedState;
+
+                  case UPDATE_SHOPPING_LIST_ITEM:
+                    return {
+                      ...state,
+                      [action.payload.itemId]: {
+                        ...state[action.payload.itemId],
+                        quantity: action.payload.quantity
+                      }
+                    };
+
             default:
                 return state;
         }
     }
 
     export default shoppingListReducer;
+
+
+
+
+
+    // case UPDATE_SHOPPING_LIST_ITEM:
+            //     return {
+            //         ...state,
+            //         itemIds: state.itemIds.map(itemId => {
+            //             if (itemId === action.payload.itemId) {
+            //                 return action.payload.quantity;
+            //             } else {
+            //                 return { ...itemId, quantity: action.payload.quantity,
+            //                         };
+            //             }
+            //             return itemId;
+            //         })
+            //     }
+
+
+
+
+
+
+
+              // case RETRIEVE_SHOPPING_LIST_ITEM:
+            //     return {...state, [action.payload.itemId]: action.payload.quantity};
+            //     // return { ...state, itemIds: [...state.itemIds, action.payload] };
+
+              // return {...state, ...action.shoppingListItems};
+                // return {...state, itemIds: action.payload};

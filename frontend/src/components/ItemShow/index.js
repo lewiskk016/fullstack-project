@@ -17,6 +17,15 @@ const ItemShow = () => {
     const userId = useSelector(state => state.session.user?.id)
 
 
+    const [reviewRatings, setReviewRatings] = useState([0, 0, 0]);
+
+    const handleRatingClick = (row, rating) => {
+    const updatedRatings = [...reviewRatings];
+    updatedRatings[row] = rating;
+    setReviewRatings(updatedRatings);
+    };
+
+
     useEffect(() => {
         dispatch(fetchItem(itemId));
     }, [dispatch, itemId]);
@@ -51,9 +60,9 @@ const ItemShow = () => {
         setItemQuantity(parseInt(e.currentTarget.value))
     }
 
-    const handleRatingClick = (rating) => {
-        setReviewRating(rating);
-      };
+    // const handleRatingClick = (rating) => {
+    //     setReviewRating(rating);
+    //   };
 
     return (
         <div id="item-show-container" className="item-show-container">
@@ -168,19 +177,88 @@ const ItemShow = () => {
 
                     <div className="reviews-container">
                         <h3 className="reviews">Customer Ratings</h3>
-                        <br />
-                        <br />
-                    <div className="rating-stars">
                         {[1, 2, 3, 4, 5].map((rating) => (
-                            <span
-                                key={rating}
-                                className={`star ${rating <= reviewRating ? 'filled' : ''}`}
-                                onClick={() => handleRatingClick(rating)}
-                                >
-                                ★
-                            </span>
+                        <span
+                        key={rating}
+                        className={`star ${rating <= 3 ? 'filled' : ''}`}
+                         onClick={() => handleRatingClick(rating)}
+                        >
+                        ★
+                        </span>
                         ))}
-                    </div>
+                        <br />
+                        <br />
+                        <b>Leave a Review</b>
+
+                        <div className="rating-stars">
+          <div className="star-row">
+            <span className="rating-label">Quality</span>
+            {/* {reviewRatings[0]} */}
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <span
+                key={rating}
+                className={`star ${rating <= reviewRatings[0] ? 'filled' : ''}`}
+                onClick={() => handleRatingClick(0, rating)}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+          <div className="star-row">
+            <span className="rating-label">Value</span>
+            {/* {reviewRatings[1]} */}
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <span
+                key={rating}
+                className={`star ${rating <= reviewRatings[1] ? 'filled' : ''}`}
+                onClick={() => handleRatingClick(1, rating)}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+          <div className="star-row">
+            <span className="rating-label">Ease of Use</span>
+            {/* {reviewRatings[2]} */}
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <span
+                key={rating}
+                className={`star ${rating <= reviewRatings[2] ? 'filled' : ''}`}
+                onClick={() => handleRatingClick(2, rating)}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {/* <div className="rating-stars">
+                        {reviewRatings.map((rowRating, row) => (
+                            <div key={row} className="star-row">
+                                {[1, 2, 3, 4, 5].map((rating) => (
+                                <span
+                                    key={rating}
+                                    className={`star ${rating <= rowRating ? 'filled' : ''}`}
+                                    onClick={() => handleRatingClick(row, rating)}
+                                    >
+                                    ★
+                                </span>
+                                ))}
+                            </div>
+                         ))}
+                    </div> */}
                     <br />
                     <br />
                     </div>
