@@ -43,6 +43,11 @@ const total = totalPrice(shoppingListItems);
   return (
     <div className="shopping-list-container">
       <div className="shopping-list-header">
+        <br/>
+        <br />
+        <br />
+        <br />
+        <br />
         <h1 className="shopping-list-title">Shopping List</h1>
         <h2 className="shopping-list-subtitle">Price</h2>
         <div>Total Quantity: </div>
