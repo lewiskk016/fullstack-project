@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchItem} from '../../store/item';
 import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
-import { createShoppingListItem } from '../../store/shoppinglist';
+import { createShoppingListItem, fetchShoppingCart  } from '../../store/shoppinglist';
 
 const ItemShow = () => {
     const { itemId } = useParams();
@@ -18,7 +18,6 @@ const ItemShow = () => {
 
 
     useEffect(() => {
-        debugger
         dispatch(fetchItem(itemId));
     }, [dispatch, itemId]);
 
@@ -35,8 +34,8 @@ const ItemShow = () => {
         //     item_id: itemId,
         //     quantity: itemQuantity
         //   };
-          debugger
           dispatch(createShoppingListItem(userId, itemId, itemQuantity))
+          .then(() => dispatch(fetchShoppingCart()))
         //   {
         //     shopping_list: userOrder }));
             history.push('/shopping_lists');
@@ -48,9 +47,7 @@ const ItemShow = () => {
     }
 
     const updateSelector = (e) => {
-        debugger
         setItemQuantity(parseInt(e.currentTarget.value))
-        debugger
     }
 
     const handleRatingClick = (rating) => {

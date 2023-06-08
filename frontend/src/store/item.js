@@ -31,8 +31,7 @@ export const fetchItems = () => async (dispatch) => {
     if (response.ok) {
       const data = await response.json();
       dispatch(retrieveItems(data));
-    } else {
-    }
+    } 
   };
 
 export const fetchItem = (itemId) => async (dispatch) => {
@@ -46,18 +45,15 @@ export const fetchItem = (itemId) => async (dispatch) => {
 
 
 const itemsReducer = (state = {}, action) => {
-  // Object.freeze(state)
-  // let newState = {...state}
   switch (action.type) {
     case RETRIEVE_ITEMS:
         return {...state, ...action.items};
     case RETRIEVE_ITEM:
-      if (action.item && action.item.id) { // Check if action.item and action.item.id are defined
+      if (action.item && action.item.id) {
       return { ...state, [action.item.id]: action.item };
                } else {
                 return state;
                }
-        // return { ...state, [action.item.id]: action.item };
 
     default:
       return state;

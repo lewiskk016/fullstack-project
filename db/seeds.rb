@@ -84,7 +84,7 @@
 
 
     item1 = Item.create!(
-      name: "Kaytee Wild Bird Food 5 Pounds
+      name: "Kaytee Wild Bird Food 10 Pounds
       ",
         category: "Seed",
         price: 9.99,
@@ -105,6 +105,9 @@
         description: "A bird bath that provides birds with a place to drink and bathe."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdbath1.jpeg')
+    item_test = item2.photo.attach(io: item, filename: 'item2.jpeg')
+
     item3 = Item.create!(
       name: "Bird Watching Binoculars",
         category: "Binoculars",
@@ -112,12 +115,18 @@
         description: "High-quality binoculars designed for bird watchers, allowing for clear and detailed bird observations."
     )
 
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/item3.jpeg')
+    item_test = item3.photo.attach(io: item, filename: 'item3.jpeg')
+
     item4 = Item.create!(
       name: "Birdhouse with Perch",
         category: "Houses",
         price: 29.99,
         description: "A cozy birdhouse with a perch, providing birds with a comfortable place to nest."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdhouse4.jpeg')
+    item_test = item4.photo.attach(io: item, filename: 'item4.jpeg')
 
     item5 = Item.create!(
       name: "Hanizi Wild Bird Feeders for Outside, Hanging Bird Feeder Squirrel Proof, Outdoor Birds Feeders Wild Bird Seed, Garden Yard Decoration (Green)",
@@ -130,6 +139,9 @@
         - Clever Design: Inclined roof to help prevent the seeds inside from getting wet. When the seeds are eaten, more seeds will naturally fill the tray. The tray has leaking holes to avoid water accumulation, keep the bird seeds dry.
         - Ideal Choice: For your convenience and the health of your garden birds, choose Hanizi wild bird feeder that is easy to fill, empty, and clean. Check the birds feeders once a week and wash it regularly with mild soap and water solution. If you have any questions about bird feeders, please feel free to contact us."
     )
+
+    item = URI.open('https://aveson-publicbucket.s3.amazonaws.com/birdfeeder05.jpeg')
+    item_test = item5.photo.attach(io: item, filename: 'item5.jpeg')
 
     item6 = Item.create!(
       name: "Bird Feeder",

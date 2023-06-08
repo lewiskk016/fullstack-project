@@ -1,7 +1,6 @@
 class Api::ShoppingListsController < ApplicationController
     def index
         @shopping_lists = current_user.shopping_lists
-        debugger
         render :index
     end
 
@@ -20,6 +19,16 @@ class Api::ShoppingListsController < ApplicationController
     #   render :show
     # end
 
+  #   def create
+  #     @shopping_list = ShoppingList.new(shopping_list_params)
+  #     if @shopping_list.save
+  #         render :show
+  #     else
+  #         render json: @shopping_list.errors.full_messages, status: :unprocessable_entity
+  #     end
+  # end
+
+
     def create
       @shopping_list = ShoppingList.find_by(user_id: params[:user_id], item_id: params[:item_id])
       unless @shopping_list
@@ -34,6 +43,8 @@ class Api::ShoppingListsController < ApplicationController
         render :show
       else
         render json: { errors: @shopping_list.errors.full_messages }, status: :unprocessable_entity
+      # end
+      #   render json: { errors: @shopping_list.errors.full_messages }, status: :unprocessable_entity
       end
     end
 

@@ -1,18 +1,59 @@
 .items-container {
-  background-color: #beb8b8;
+  background-color: #ede6e6;
   position: relative;
-  top: 90px;
+  margin-top: 93px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   overflow-y: scroll;
 }
 
-.items-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.item {
+  width: 20%;
+  flex: 1 0 auto;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 20px;
 }
 
-.item {
-  margin-bottom: 20px;
-  padding: 40px;
-  width: 100%;
+.photo {
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.item-description {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #767676;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+
+.price {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #0410b1;
+  font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.item-price {
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #8a2005;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  text-align: center;
+}
+
+.pricemessage {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #1d0cb5;
+  font-family: "Amazon Ember", Arial, sans-serif;
 }

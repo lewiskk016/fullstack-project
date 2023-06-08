@@ -52,7 +52,6 @@ export const fetchShoppingCart = () => async (dispatch) => {
     };
 
 export const createShoppingListItem = (userId, itemId, quantity) => async (dispatch) => {
-    debugger
     const response = await csrfFetch('/api/shopping_lists', {
         method: 'POST',
         headers: {
@@ -61,9 +60,7 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
         body: JSON.stringify({userId, itemId, quantity})
     });
     if (response.ok) {
-        debugger
         const data = await response.json();
-        debugger
         dispatch(retrieveShoppingListItem(data.itemId, data.quantity));
     }
 }
@@ -100,17 +97,17 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
     }
 
 
-    const shoppingListReducer = (state = {}, action) => {
-        debugger
+    const initialState = {};
+
+    const shoppingListReducer = (state = initialState, action) => {
         switch(action.type) {
             case RETRIEVE_SHOPPING_LIST_ITEMS:
-                debugger
-                return {...state, ...action.shoppingListItems};
+                // return {...state, ...action.shoppingListItems};
+                return {...state, itemIds: action.payload};
             case RETRIEVE_SHOPPING_LIST_ITEM:
-                debugger
-                return {...state, [action.shoppingListItem.id]: action.shoppingListItem};
+                return {...state, [action.payload.itemId]: action.payload.quantity};
+                // return { ...state, itemIds: [...state.itemIds, action.payload] };
             case REMOVE_SHOPPING_LIST_ITEM:
-                debugger
                 const newState = {...state};
                 delete newState[action.shoppingListItemId];
                 return newState;
