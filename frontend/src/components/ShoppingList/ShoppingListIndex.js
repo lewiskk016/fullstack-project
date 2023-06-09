@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchShoppingCart, updateShoppingCart, deleteShoppingListItem } from "../../store/shoppinglist";
 import { useHistory } from "react-router-dom";
 import './ShoppingListIndex.css';
+import { Link } from "react-router-dom";
 
 const ShoppingListIndex = () => {
   const dispatch = useDispatch();
@@ -28,30 +29,35 @@ const ShoppingListIndex = () => {
   console.log(shoppingListItems);
 
   return (
-
-
-
-    <div className="leftcolumn">
-    <div className="shopping-list-container">
-      {Object.entries(shoppingListItems).map(([itemId, quantity]) => {
-        let item = items[itemId];
-        if (item) {
+    <div className="entire-window">
+      <div className="leftcolumn-checkout">
+        <span className="bbop-title">Shopping Cart</span>
+        <span className="priceholder">Price</span>
+        <hr></hr>
+        <br />
+        <div className="shoppingcart-list">
+        {Object.entries(shoppingListItems).map(([itemId, quantity]) => {
+          let item = items[itemId];
+          if (item) {
           return (
-            <div key={itemId}>
-              <div>
-                <p>Name: {item.name}</p>
-                <p>Price: {item.price}</p>
-              </div>
+            <div key={itemId} className="item-entry">
+                <Link to={`/items/${itemId}`}>
+                  <img src={item.photoUrl} alt={item.name} className="cart-image" />
+                </Link>
+                <p className='cartItemname'><b>Name: </b>
+                {item.name}</p>
+                <p className='cartItemquantity'><b>Quantity:</b> <span className="itemquantity">{quantity} </span></p>
+                <p className='cartItemprice'><b> $ {item.price}</b></p>
+                <hr></hr>
             </div>
           );
         }
       })}
       </div>
+      </div>
 
       <div className="shopping-list-header">
-        <h1 className="shopping-list-title">Shopping List</h1>
-
-        <div id="rightcolumn" className="rightcolumn">
+        <div id="rightcolumn2" className="rightcolumn2">
           <div id="prime" className="prime">
             <div id="content-container" className="content-container">
               <span className="bbop-content">
@@ -73,7 +79,7 @@ const ShoppingListIndex = () => {
                 <b>Subtotal ({Object.keys(shoppingListItems).length} items):</b>
               </span>
               <br />
-              <span className="priceblock_ourprice">${newTotal}</span>
+              <span className="priceblock_ourpricee">${newTotal.toFixed(2)}</span>
               <br />
               <br />
               <span className="pricemessage">
@@ -99,24 +105,24 @@ const ShoppingListIndex = () => {
           </div>
         </div>
 
-        <div>Total Quantity: </div>
+        {/* <div>Total Quantity: </div> */}
       </div>
 
-      <div className="item-list"></div>
+      {/* <div className="item-list"></div> */}
 
-      <div className="shopping-list-footer-left-title">
+      {/* <div className="shopping-list-footer-left-title">
         Subtotal ({Object.keys(shoppingListItems).length} items):
-      </div>
-      <div className="shopping-list-footer-left-price">${newTotal.toFixed(2)}</div>
+      </div> */}
+      {/* <div className="shopping-list-footer-left-price">${newTotal.toFixed(2)}</div> */}
 
-      <div className="shopping-list-footer">
+      {/* <div className="shopping-list-footer">
         <div className="shopping-list-footer-left">
+    </div>
           <h2 className="shopping-list-footer-left-title">Subtotal ($ {newTotal.toFixed(2)}):</h2>
           <h2 className="shopping-list-footer-left-price"></h2>
-        </div>
-        <div className="shopping-list-footer-right"></div>
+        </div> */}
+        {/* <div className="shopping-list-footer-right"></div> */}
       </div>
-    </div>
   );
 };
 
