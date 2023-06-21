@@ -37,17 +37,7 @@ const ItemShow = () => {
         if (!sessionUser) {
           history.push(`/login`);
         } else {
-        //   const userId = sessionUser.id;
-        //   const userOrder = {
-        //     user_id: userId,
-        //     item_id: itemId,
-        //     quantity: itemQuantity
-        //   };
-        // dispatch(fetchShoppingCart())
           dispatch(createShoppingListItem(userId, itemId, itemQuantity))
-        //   .then(() => dispatch(fetchShoppingCart()))
-        //   {
-        //     shopping_list: userOrder }));
             history.push('/shopping_lists');
         }
       };
