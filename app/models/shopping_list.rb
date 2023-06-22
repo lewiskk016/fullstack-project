@@ -5,7 +5,7 @@ class ShoppingList < ApplicationRecord
     # foreign_key: :user_id,
     # class_name: :User
 
-    belongs_to :item
+    has_many :item
     # foreign_key: :item_id,
     # class_name: :Item
 
