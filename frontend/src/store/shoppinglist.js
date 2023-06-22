@@ -1,6 +1,6 @@
 import csrfFetch from './csrf';
-import { retrieveItem } from './item';
-import {dispatch } from 'react-redux';
+// import { retrieveItem } from './item';
+// import {dispatch } from 'react-redux';
 
 export const RETRIEVE_SHOPPING_LIST_ITEM = 'RETRIEVE_SHOPPING_LIST_ITEM';
 export const RETRIEVE_SHOPPING_LIST_ITEMS = 'RETRIEVE_SHOPPING_LIST_ITEMS';
@@ -8,15 +8,12 @@ export const REMOVE_SHOPPING_LIST_ITEM = 'REMOVE_SHOPPING_LIST_ITEM';
 export const REMOVE_SHOPPING_LIST_ITEMS = 'REMOVE_SHOPPING_LIST_ITEMS'
 export const UPDATE_SHOPPING_LIST_ITEM = 'UPDATE_SHOPPING_LIST_ITEM';
 
+
 const retrieveShoppingListItem = (itemId, quantity) =>({
     type: RETRIEVE_SHOPPING_LIST_ITEM,
     payload: {itemId, quantity}
 });
 
-// const retrieveShoppingListItem = cartItemId => ({
-//     type: RETRIEVE_SHOPPING_LIST_ITEM,
-//     cartItemId
-// });
 
 const retrieveShoppingListItems = (itemIds) => ({
     type: RETRIEVE_SHOPPING_LIST_ITEMS,
@@ -33,11 +30,10 @@ const removeShoppingListItems = (itIds) => ({
     itIds
 });
 
-
-const updateShoppingListItem = ( itemId, quantity) => ({
+export const updateShoppingListItem = (itemId, quantity) => ({
     type: UPDATE_SHOPPING_LIST_ITEM,
-    payload: { itemId, quantity}
-});
+    payload: { itemId, quantity }
+  });
 
 export const getShoppingListItem = (shoppingListItemId) => state => {
     return state?.shoppingListItems? state.shoppingListItems[shoppingListItemId] : null;
@@ -50,8 +46,7 @@ export const getShoppingListItems = state => {
         return [];
     }
 }
-//     return state?.shoppingListItems? Object.values(state.shoppingListItems) : [];
-// }
+
 
 export const fetchShoppingCart = () => async (dispatch) => {
     const response = await csrfFetch('/api/shopping_lists');
@@ -79,40 +74,35 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
     if (response.ok) {
         const data = await response.json();
         dispatch(retrieveShoppingListItem(data.itemId, data.quantity));
-        // dispatch(retrieveShoppingListItems(data.itemIds));
     }
 }
 
-
-    export const updateShoppingCart = (itemId, quantity) => async (dispatch) => {
+    export const updateShoppingList = (userId, itemId, quantity) => async (dispatch) => {
         const response = await csrfFetch(`/api/shopping_lists/${itemId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({itemId, quantity})
+            body: JSON.stringify({ userId, itemId, quantity })
         });
         if (response.ok) {
             const data = await response.json();
-            // dispatch(retrieveShoppingListItem(data.itemId, data.quantity))
-            // dispatch(updateShoppingListItem(data.quantity));
             dispatch(updateShoppingListItem(data.itemId, data.quantity));
-            // dispatch(retrieveItem(data.item));
         }
     }
 
     export const deleteShoppingListItem = (userId, itemId) => async (dispatch) => {
         const response = await csrfFetch(`/api/shopping_lists/${itemId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({userId, itemId})
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ userId, itemId })
         });
         if (response.ok) {
-            dispatch(removeShoppingListItem(itemId));
+          dispatch(removeShoppingListItem(itemId));
         }
-    }
+      };
 
     export const checkoutShoppingList = (userId) => async (dispatch) => {
         const response = await csrfFetch('/api/shopping_lists', {
@@ -128,9 +118,6 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
     }
 
 
-    // const initialState = {
-    //     itemIds: [],
-    // };
 
     const initialState = {};
     const shoppingListReducer = (state = initialState, action) => {
@@ -151,15 +138,10 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
                 case REMOVE_SHOPPING_LIST_ITEM:
                     const { [action.itemId]: removedItem, ...updatedState } = state;
                     return updatedState;
+            case UPDATE_SHOPPING_LIST_ITEM:
 
-                  case UPDATE_SHOPPING_LIST_ITEM:
-                    return {
-                      ...state,
-                      [action.payload.itemId]: {
-                        ...state[action.payload.itemId],
-                        quantity: action.payload.quantity
-                      }
-                    };
+                return { ...state, [action.payload.itemId]: action.payload.quantity, }
+
 
             default:
                 return state;
@@ -167,34 +149,3 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
     }
 
     export default shoppingListReducer;
-
-
-
-
-
-    // case UPDATE_SHOPPING_LIST_ITEM:
-            //     return {
-            //         ...state,
-            //         itemIds: state.itemIds.map(itemId => {
-            //             if (itemId === action.payload.itemId) {
-            //                 return action.payload.quantity;
-            //             } else {
-            //                 return { ...itemId, quantity: action.payload.quantity,
-            //                         };
-            //             }
-            //             return itemId;
-            //         })
-            //     }
-
-
-
-
-
-
-
-              // case RETRIEVE_SHOPPING_LIST_ITEM:
-            //     return {...state, [action.payload.itemId]: action.payload.quantity};
-            //     // return { ...state, itemIds: [...state.itemIds, action.payload] };
-
-              // return {...state, ...action.shoppingListItems};
-                // return {...state, itemIds: action.payload};

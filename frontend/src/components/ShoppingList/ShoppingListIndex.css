@@ -173,7 +173,7 @@
   }
 
   .cartItemprice {
-    position: absolute;
+    position: relative;
     left: 660px;/* Adjust the margin as needed */
     font-family: "Amazon Ember", Arial, sans-serif;
     font-size: 18px;

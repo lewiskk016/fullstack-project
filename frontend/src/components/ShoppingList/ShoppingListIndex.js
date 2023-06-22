@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchShoppingCart, updateShoppingCart, deleteShoppingListItem } from "../../store/shoppinglist";
+import { fetchShoppingCart, updateShoppingCart, updateShoppingList, deleteShoppingListItem } from "../../store/shoppinglist";
 import { useHistory } from "react-router-dom";
 import './ShoppingListIndex.css';
 import { Link } from "react-router-dom";
 
 const ShoppingListIndex = () => {
+  const shoppingListItem = useSelector((state) => state.shoppingList);
+  const userId = useSelector((state) => state.session.user.id);
   const dispatch = useDispatch();
   const history = useHistory();
   const shoppingList = useSelector((state) => Object.values(state.shoppingList));
   const products = useSelector((state) => state.shoppingList.products);
   const items = useSelector((state) => state.items);
   const shoppingListItems = useSelector((state) => state.shoppingList);
+  const [showDeleteForm, setShowDeleteForm] = useState(false);
+  const [showDeleteButton, setShowDeleteButton] = useState(true);
+  const [showEditButton, setShowEditButton] = useState(true);
+
 
   const totalPrice = (shoppingListItems) => {
     let total = 0;
@@ -27,6 +33,17 @@ const ShoppingListIndex = () => {
 
   const newTotal = totalPrice(shoppingListItems);
   console.log(shoppingListItems);
+
+
+  const handleDelete = (userId, itemId) => {
+    dispatch(deleteShoppingListItem(userId, itemId))
+  };
+
+
+ const handleUpdate = (userId, itemId, e) => {
+  const newQuantity = parseInt(e.target.value);
+  dispatch(updateShoppingList(userId, itemId, newQuantity));
+};
 
   return (
     <div className="entire-window">
@@ -49,6 +66,25 @@ const ShoppingListIndex = () => {
                 <p className='cartItemquantity'><b>Quantity:</b> <span className="itemquantity">{quantity} </span></p>
                 <p className='cartItemprice'><b> $ {item.price}</b></p>
                 <hr></hr>
+                <br />
+                <button className="delete-button" onClick={(e) => handleDelete(userId, itemId)}>Delete</button>
+                <select
+                className="cart-item-quantity"
+                value={item.quantity}
+                onChange={(e) => handleUpdate(userId, itemId, e)}
+              >
+                <option value={1}>Qty: 1</option>
+                <option value={2}>Qty: 2</option>
+                <option value={3}>Qty: 3</option>
+                <option value={4}>Qty: 4</option>
+                <option value={5}>Qty: 5</option>
+                <option value={6}>Qty: 6</option>
+                <option value={7}>Qty: 7</option>
+                <option value={8}>Qty: 8</option>
+                <option value={9}>Qty: 9</option>
+                <option value={10}>Qty: 10</option>
+              </select>
+
             </div>
           );
         }

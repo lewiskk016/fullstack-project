@@ -14,7 +14,7 @@ function LoginFormPage() {
   const history = useHistory();
   const location = useLocation();
 
-  if (sessionUser) return <Redirect to="/items" />;
+  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

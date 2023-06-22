@@ -31,19 +31,35 @@ class Api::ShoppingListsController < ApplicationController
     end
 
 
-    def update
-      # debugger
-        @shopping_list = ShoppingList.find_by(id: params[:id])
-        if @shopping_list
-          if @shopping_list.update(shopping_list_params)
-            render :show
-            # debugger
-          else
-            render json: @shopping_list.errors.full_messages, status: 422
-          end
-        else
-          render json: { error: 'Shopping list item not found' }, status: 404
+    # def update
+    #     @shopping_list = ShoppingList.find_by(id: params[:id])
+    #     if @shopping_list
+    #       if @shopping_list.update(shopping_list_params)
+    #         render :show
+    #       else
+    #         render json: @shopping_list.errors.full_messages, status: 422
+    #       end
+    #     else
+    #       render json: { error: 'Shopping list item not found' }, status: 404
+    #     end
+    #   end
+
+      def update
+        @shopping_list = ShoppingList.find_by(user_id: params[:user_id], item_id: params[:item_id])
+        if @shopping_list.nil?
+          render json: { errors: ['Cart item not found'] }, status: :not_found
+          return
         end
+
+        @shopping_list.quantity = params[:quantity].to_i
+        unless @shopping_list.save
+          render json: { errors: @shopping_list.errors.full_messages }, status: :unprocessable_entity
+          return
+        end
+
+        @user = User.find(params[:user_id])
+        @shopping_lists = ShoppingList.includes(:item).where(user_id: @user.id)
+        render :show
       end
 
 
