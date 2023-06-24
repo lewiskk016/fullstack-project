@@ -1,25 +1,25 @@
 import csrfFetch from './csrf';
 import { retrieveItem } from './item';
 
-export const RETRIEVE_REVIEW = 'RETRIEVE_REVIEW'
-export const RETRIEVE_REVIEWS = 'RETRIEVE_REVIEWS'
-export const REMOVE_REVIEW = 'REMOVE_REVIEW'
+export const RETRIEVE_REVIEW = 'reviews/RETRIEVE_REVIEW'
+export const RETRIEVE_REVIEWS = 'reviews/RETRIEVE_REVIEWS'
+export const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW'
 
-const retrieveReview = review => {
+const retrieveReview = (review) => {
     return {
         type: RETRIEVE_REVIEW,
         review
     }
 }
 
-const retrieveReviews = reviews => {
+const retrieveReviews = (reviews) => {
     return {
         type: RETRIEVE_REVIEWS,
         reviews
     }
 }
 
-const removeReview = reviewId => {
+const removeReview = (reviewId) => {
     return {
         type: REMOVE_REVIEW,
         reviewId
@@ -55,16 +55,11 @@ export const fetchReview = (reviewId) => async (dispatch) => {
 export const createReview = (review) => async (dispatch) => {
     const res = await csrfFetch('/api/reviews/', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify({review})
     });
-
     if(res.ok){
         const data = await res.json();
-        dispatch(retrieveReview(data.review));
-        dispatch(retrieveItem(data.product));
+        dispatch(retrieveReview(data));
     }
 }
 
@@ -93,19 +88,19 @@ export const deleteReview = reviewId => async (dispatch) => {
     }
 }
 
-const reviewsReducer = (state ={}, action) => {
+const reviewsReducer = (state = {}, action) => {
     switch (action.type) {
-        case RETRIEVE_REVIEW:
-            return {...state, [action.review.id]: action.review};
-        case RETRIEVE_REVIEWS:
-            return {...state, ...action.reviews};
-        case REMOVE_REVIEW:
-            const newState = { ...state };
-            delete newState[action.reviewId];
-            return newState;
-        default:
-            return state;
+      case RETRIEVE_REVIEW:
+        return { ...state, [action.review.id]: action.review };
+      case RETRIEVE_REVIEWS:
+        return { ...state, ...action.reviews };
+      case REMOVE_REVIEW:
+        const newState = { ...state };
+        delete newState[action.reviewId];
+        return newState;
+      default:
+        return state;
     }
-}
+  }
 
 export default reviewsReducer

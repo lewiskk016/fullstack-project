@@ -5,6 +5,9 @@ import { fetchItem} from '../../store/item';
 import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
 import { createShoppingListItem, fetchShoppingCart  } from '../../store/shoppinglist';
+import CreateReviews from '../Reviews/CreateReview';
+import { fetchAllReviews } from '../../store/reviews';
+import { retrieveReview } from '../../store/reviews';
 
 const ItemShow = () => {
     const { itemId } = useParams();
@@ -179,6 +182,7 @@ const ItemShow = () => {
                         <br />
                         <br />
                         <b>Leave a Review</b>
+                        <CreateReviews/>
 
                         <div className="rating-stars">
           <div className="star-row">
@@ -221,34 +225,6 @@ const ItemShow = () => {
             ))}
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    {/* <div className="rating-stars">
-                        {reviewRatings.map((rowRating, row) => (
-                            <div key={row} className="star-row">
-                                {[1, 2, 3, 4, 5].map((rating) => (
-                                <span
-                                    key={rating}
-                                    className={`star ${rating <= rowRating ? 'filled' : ''}`}
-                                    onClick={() => handleRatingClick(row, rating)}
-                                    >
-                                    ★
-                                </span>
-                                ))}
-                            </div>
-                         ))}
-                    </div> */}
                     <br />
                     <br />
                     </div>
