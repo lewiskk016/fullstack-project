@@ -6,7 +6,7 @@ import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
 import { createShoppingListItem, fetchShoppingCart  } from '../../store/shoppinglist';
 import CreateReviews from '../Reviews/CreateReview';
-import { fetchAllReviews } from '../../store/reviews';
+import { fetchAllReviews, getReviews } from '../../store/reviews';
 import { retrieveReview } from '../../store/reviews';
 
 const ItemShow = () => {
@@ -18,9 +18,9 @@ const ItemShow = () => {
     const history = useHistory()
     const [reviewRating , setReviewRating] = useState(0)
     const userId = useSelector(state => state.session.user?.id)
-
-
     const [reviewRatings, setReviewRatings] = useState([0, 0, 0]);
+    const reviews = useSelector(getReviews)
+    // const itemReviews = reviews.filter(review => review.itemId === itemId);
 
     const handleRatingClick = (row, rating) => {
     const updatedRatings = [...reviewRatings];
@@ -31,6 +31,7 @@ const ItemShow = () => {
 
     useEffect(() => {
         dispatch(fetchItem(itemId));
+        dispatch(fetchAllReviews(itemId));
     }, [dispatch, itemId]);
 
 
@@ -53,9 +54,21 @@ const ItemShow = () => {
         setItemQuantity(parseInt(e.currentTarget.value))
     }
 
-    // const handleRatingClick = (rating) => {
-    //     setReviewRating(rating);
-    //   };
+    const renderRatingStars = (rating) => {
+      const starIcons = [];
+      for (let i = 1; i <= 5; i++) {
+        starIcons.push(
+          <span
+            key={i}
+            className={`star ${i <= rating ? 'filled' : ''}`}
+            onClick={() => handleRatingClick(rating)}
+          >
+            ★
+          </span>
+        );
+      }
+      return starIcons;
+    };
 
     return (
         <div id="item-show-container" className="item-show-container">
@@ -183,11 +196,64 @@ const ItemShow = () => {
                         <br />
                         <b>Leave a Review</b>
                         <CreateReviews/>
-
+                        {reviews.length > 0 ? (
+                          <div>
+                            <h4>Reviews:</h4>
+                              {reviews.map(review => (
+                              <div key={review.id}>
+                                <p>Rating: {renderRatingStars(review.rating)}</p>
+                                <p>Title: {review.title}</p>
+                                <p>Body: {review.body}</p>
+                                <hr />
+                            </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <p>No reviews available.</p>
+        )}
                         <div className="rating-stars">
-          <div className="star-row">
+
+        </div>
+                    <br />
+                    <br />
+                    </div>
+            </div>
+        </div>
+    )
+
+}
+
+export default ItemShow;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <div className="star-row">
             <span className="rating-label">Quality</span>
-            {/* {reviewRatings[0]} */}
             {[1, 2, 3, 4, 5].map((rating) => (
               <span
                 key={rating}
@@ -200,7 +266,6 @@ const ItemShow = () => {
           </div>
           <div className="star-row">
             <span className="rating-label">Value</span>
-            {/* {reviewRatings[1]} */}
             {[1, 2, 3, 4, 5].map((rating) => (
               <span
                 key={rating}
@@ -213,8 +278,7 @@ const ItemShow = () => {
           </div>
           <div className="star-row">
             <span className="rating-label">Ease of Use</span>
-            {/* {reviewRatings[2]} */}
-            {[1, 2, 3, 4, 5].map((rating) => (
+\            {[1, 2, 3, 4, 5].map((rating) => (
               <span
                 key={rating}
                 className={`star ${rating <= reviewRatings[2] ? 'filled' : ''}`}
@@ -223,15 +287,4 @@ const ItemShow = () => {
                 ★
               </span>
             ))}
-          </div>
-        </div>
-                    <br />
-                    <br />
-                    </div>
-            </div>
-        </div>
-    )
-
-}
-
-export default ItemShow;
+          </div> */}
