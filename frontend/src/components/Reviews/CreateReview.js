@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { createReview, fetchAllReviews } from '../../store/reviews';
 import {retrieveReview } from '../../store/reviews';
 import {updateReview, deleteReview} from '../../store/reviews';
+import './CreateReview.css';
 
 const CreateReviews = ({review}) => {
   const [reviewRatings, setReviewRatings] = useState([0]);
@@ -90,10 +91,7 @@ const CreateReviews = ({review}) => {
           </div>
 
         </div>
-        <div className="update-delete-reviews">
-        <button type="button" onClick={handleUpdateReview}>Edit Your Review</button>
-        <button type="button" onClick={handleDeleteReview}>Delete</button>
-        </div>
+
         <button type="submit">Submit Review</button>
       </form>
 
@@ -113,7 +111,10 @@ export default CreateReviews;
 
 
 
-
+{/* <div className="update-delete-reviews">
+        <button type="button" onClick={handleUpdateReview}>Edit Your Review</button>
+        <button type="button" onClick={handleDeleteReview}>Delete</button>
+        </div> */}
 
 
 

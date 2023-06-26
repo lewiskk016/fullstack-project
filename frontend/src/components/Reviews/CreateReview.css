@@ -1,0 +1,20 @@
+.review-form-container {
+    display:inline-block;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+
+}
+
+.rating-stars {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 2px;
+}

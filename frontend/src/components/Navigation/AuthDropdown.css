@@ -46,6 +46,7 @@
     font-size: 13px;
     font-weight: bold;
     text-align: center;
+    z-index: 999;
   }
   .auth-dropdown-container button {
     background: none;

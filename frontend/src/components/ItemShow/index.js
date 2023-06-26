@@ -8,6 +8,7 @@ import { createShoppingListItem, fetchShoppingCart  } from '../../store/shopping
 import CreateReviews from '../Reviews/CreateReview';
 import { fetchReview, RETRIEVE_REVIEWS } from '../../store/reviews';
 import { retrieveReview } from '../../store/reviews';
+import { updateReview, deleteReview } from '../../store/reviews';
 
 
 const ItemShow = () => {
@@ -21,8 +22,6 @@ const ItemShow = () => {
     const userId = useSelector(state => state.session.user?.id)
     const [reviewRatings, setReviewRatings] = useState([0, 0, 0]);
     const reviews = useSelector(state => Object.values(state.reviews))
-    // const itemReviews = reviews.filter(review => review.itemId === itemId);
-
 
     const handleRatingClick = (row, rating) => {
     const updatedRatings = [...reviewRatings];
@@ -74,6 +73,10 @@ const ItemShow = () => {
         );
       }
       return starIcons;
+    };
+
+    const handleDeleteReview = (reviewId) => {
+      dispatch(deleteReview(reviewId));
     };
 
     return (
@@ -170,7 +173,7 @@ const ItemShow = () => {
                         <b> Flyme </b>
                     <br />
                     </span>
-                    <br />
+
                     <br />
                     <hr></hr>
                     <br />
@@ -183,12 +186,12 @@ const ItemShow = () => {
                         {item.description}
                     </span>
                     <br />
-                    <br />
+
                     <br />
                     <hr></hr>
 
                     <div className="reviews-container">
-                        <h3 className="reviews">Customer Ratings</h3>
+                        {/* <h3 className="reviews">Customer Ratings</h3>
                         {[1, 2, 3, 4, 5].map((rating) => (
                         <span
                         key={rating}
@@ -197,11 +200,10 @@ const ItemShow = () => {
                         >
                         ★
                         </span>
-                        ))}
-                        <br />
-                        <br />
-                        <b>Leave a Review</b>
+                        ))} */}
+                        <div className="reviews-container">
                         <CreateReviews/>
+                        </div>
                         <div>
   <h4>Reviews:</h4>
   {reviews
@@ -211,6 +213,11 @@ const ItemShow = () => {
         <p>Rating: {renderRatingStars(review.rating)}</p>
         <p>Title: {review.title}</p>
         <p>Body: {review.body}</p>
+        {userId === review.userId && (
+                  <button onClick={() => handleDeleteReview(review.id)}>
+                    Delete
+                  </button>
+                )}
         <hr />
       </div>
     ))}
