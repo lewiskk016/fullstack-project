@@ -7,6 +7,8 @@ class Item < ApplicationRecord
 
 
     has_many :reviews,
+    foreign_key: :item_id,
+    class_name: :Review,
     dependent: :destroy
 
     def update_reviews
