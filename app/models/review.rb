@@ -3,6 +3,8 @@ class Review < ApplicationRecord
     validates :rating, :title, :body, :user_id, :item_id, presence: true
     validates :rating, inclusion: { in: (1..5) }
 
+    attribute :title, :string
+
 
     belongs_to :user,
       foreign_key: :user_id,
