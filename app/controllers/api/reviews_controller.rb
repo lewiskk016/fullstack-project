@@ -27,7 +27,6 @@ class Api::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         if @review
             @review.delete
-            head :no_content
         end
     end
 

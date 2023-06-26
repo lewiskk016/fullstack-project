@@ -6,8 +6,9 @@ import './ItemsShow.css';
 import { useHistory } from 'react-router-dom';
 import { createShoppingListItem, fetchShoppingCart  } from '../../store/shoppinglist';
 import CreateReviews from '../Reviews/CreateReview';
-import { fetchAllReviews, getReviews } from '../../store/reviews';
+import { fetchReview, RETRIEVE_REVIEWS } from '../../store/reviews';
 import { retrieveReview } from '../../store/reviews';
+
 
 const ItemShow = () => {
     const { itemId } = useParams();
@@ -19,8 +20,9 @@ const ItemShow = () => {
     const [reviewRating , setReviewRating] = useState(0)
     const userId = useSelector(state => state.session.user?.id)
     const [reviewRatings, setReviewRatings] = useState([0, 0, 0]);
-    const reviews = useSelector(getReviews)
+    const reviews = useSelector(state => Object.values(state.reviews))
     // const itemReviews = reviews.filter(review => review.itemId === itemId);
+
 
     const handleRatingClick = (row, rating) => {
     const updatedRatings = [...reviewRatings];
@@ -31,7 +33,11 @@ const ItemShow = () => {
 
     useEffect(() => {
         dispatch(fetchItem(itemId));
-        dispatch(fetchAllReviews(itemId));
+    }, [dispatch, itemId]);
+
+
+    useEffect(() => {
+      dispatch(fetchReview(itemId));
     }, [dispatch, itemId]);
 
 
@@ -199,7 +205,8 @@ const ItemShow = () => {
                         {reviews.length > 0 ? (
                           <div>
                             <h4>Reviews:</h4>
-                              {reviews.map(review => (
+                              {reviews.filter(review => review.itemId === item.id).map(review => (
+                              // {reviews.map(review => (
                               <div key={review.id}>
                                 <p>Rating: {renderRatingStars(review.rating)}</p>
                                 <p>Title: {review.title}</p>
@@ -209,11 +216,9 @@ const ItemShow = () => {
                             ))}
                           </div>
                         ) : (
-                          <p>No reviews available.</p>
+                          <p>Be the First to Leave a Review</p>
         )}
-                        <div className="rating-stars">
 
-        </div>
                     <br />
                     <br />
                     </div>
@@ -224,67 +229,3 @@ const ItemShow = () => {
 }
 
 export default ItemShow;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <div className="star-row">
-            <span className="rating-label">Quality</span>
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <span
-                key={rating}
-                className={`star ${rating <= reviewRatings[0] ? 'filled' : ''}`}
-                onClick={() => handleRatingClick(0, rating)}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-          <div className="star-row">
-            <span className="rating-label">Value</span>
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <span
-                key={rating}
-                className={`star ${rating <= reviewRatings[1] ? 'filled' : ''}`}
-                onClick={() => handleRatingClick(1, rating)}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-          <div className="star-row">
-            <span className="rating-label">Ease of Use</span>
-\            {[1, 2, 3, 4, 5].map((rating) => (
-              <span
-                key={rating}
-                className={`star ${rating <= reviewRatings[2] ? 'filled' : ''}`}
-                onClick={() => handleRatingClick(2, rating)}
-              >
-                ★
-              </span>
-            ))}
-          </div> */}

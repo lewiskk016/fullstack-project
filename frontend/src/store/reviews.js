@@ -48,7 +48,7 @@ export const fetchReview = (reviewId) => async (dispatch) => {
 
     if (res.ok){
         const data = await res.json();
-        dispatch(retrieveReview(data.review));
+        dispatch(retrieveReview(data));
     }
 }
 
@@ -74,7 +74,7 @@ export const updateReview = (review) => async (dispatch) => {
 
     if(res.ok){
         const data = await res.json();
-        dispatch(retrieveReview(data.review));
+        dispatch(retrieveReview(data));
     }
 }
 
