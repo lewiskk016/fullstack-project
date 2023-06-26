@@ -30,8 +30,11 @@ class User < ApplicationRecord
     # class_name: :ShoppingList,
     # dependent: :destroy
 
-    has_many :reviews
-    
+    has_many :reviews,
+    foreign_key: :user_id,
+    class_name: :Review,
+    dependent: :destroy
+
     private
 
     def generate_unique_session_token
