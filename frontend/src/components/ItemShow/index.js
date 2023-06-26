@@ -202,23 +202,22 @@ const ItemShow = () => {
                         <br />
                         <b>Leave a Review</b>
                         <CreateReviews/>
-                        {reviews.length > 0 ? (
-                          <div>
-                            <h4>Reviews:</h4>
-                              {reviews.filter(review => review.itemId === item.id).map(review => (
-                              // {reviews.map(review => (
-                              <div key={review.id}>
-                                <p>Rating: {renderRatingStars(review.rating)}</p>
-                                <p>Title: {review.title}</p>
-                                <p>Body: {review.body}</p>
-                                <hr />
-                            </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <p>Be the First to Leave a Review</p>
-        )}
-
+                  <div>
+                      <h4>Reviews:</h4>
+                      {reviews
+                        .filter(review => review.itemId === item.id)
+                        .map(review => (
+                      <div key={review.id}>
+                          <p>Rating: {renderRatingStars(review.rating)}</p>
+                          <p>Title: {review.title}</p>
+                          <p>Body: {review.body}</p>
+                          <hr />
+                      </div>
+                        ))}
+                      {reviews.filter(review => review.itemId === item.id).length === 0 && (
+                        <p>Be the First to Leave a Review</p>
+                        )}
+                  </div>
                     <br />
                     <br />
                     </div>
