@@ -83,6 +83,7 @@
     # end
 
     Item.destroy_all
+    Review.destroy_all
 
     item1 = Item.create!(
       name: "Kaytee Wild Bird Food 10 Pounds
