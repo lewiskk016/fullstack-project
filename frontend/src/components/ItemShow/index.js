@@ -9,6 +9,7 @@ import CreateReviews from '../Reviews/CreateReview';
 import { fetchReview, RETRIEVE_REVIEWS } from '../../store/reviews';
 import { retrieveReview } from '../../store/reviews';
 import { updateReview, deleteReview } from '../../store/reviews';
+import EditReviews from '../Reviews/UpdateReview';
 
 
 const ItemShow = () => {
@@ -22,6 +23,10 @@ const ItemShow = () => {
     const userId = useSelector(state => state.session.user?.id)
     const [reviewRatings, setReviewRatings] = useState([0, 0, 0]);
     const reviews = useSelector(state => Object.values(state.reviews))
+    const [reviewTitle, setReviewTitle] = useState('');
+    const [reviewBody, setReviewBody] = useState('');
+
+
 
     const handleRatingClick = (row, rating) => {
     const updatedRatings = [...reviewRatings];
@@ -78,6 +83,17 @@ const ItemShow = () => {
     const handleDeleteReview = (reviewId) => {
       dispatch(deleteReview(reviewId));
     };
+
+    // const handleUpdateReview = (e) => {
+    //   const reviewObject = {
+    //     rating: reviewRatings,
+    //     title: reviewTitle,
+    //     body: reviewBody,
+    //     userId: userId,
+    //     itemId: itemId,
+    //   };
+    //   dispatch(updateReview(reviewObject));
+    // };
 
     return (
         <div id="item-show-container" className="item-show-container">
@@ -213,11 +229,18 @@ const ItemShow = () => {
         <p>Rating: {renderRatingStars(review.rating)}</p>
         <p>Title: {review.title}</p>
         <p>Body: {review.body}</p>
-        {userId === review.userId && (
-                  <button onClick={() => handleDeleteReview(review.id)}>
-                    Delete
-                  </button>
+
+                  {userId === review.userId && (
+                  <div>
+                    <button
+                      onClick={() => dispatch(deleteReview(review.id))}
+                    >
+                      Delete
+                    </button>
+                    <EditReviews review={review} />
+                  </div>
                 )}
+
         <hr />
       </div>
     ))}

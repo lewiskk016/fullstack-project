@@ -10,6 +10,7 @@ import {updateReview, deleteReview} from '../../store/reviews';
 import './CreateReview.css';
 
 const CreateReviews = ({review}) => {
+  
   const [reviewRatings, setReviewRatings] = useState([0]);
   const [reviewTitle, setReviewTitle] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -29,27 +30,6 @@ const CreateReviews = ({review}) => {
      itemId: itemId,
     };
     dispatch(createReview(reviewObject));
-    setReviewTitle('');
-    setReviewBody('');
-    setReviewRatings([0]);
-  };
-
-  const handleDeleteReview = e => {
-    e.preventDefault();
-    dispatch(deleteReview(review.id));
-  };
-
-
-  const handleUpdateReview = e => {
-    e.preventDefault();
-    const reviewObject = {
-      rating: reviewRatings,
-      title: reviewTitle,
-      body: reviewBody,
-      userId: userId,
-      itemId: itemId,
-    };
-    dispatch(updateReview(reviewObject));
     setReviewTitle('');
     setReviewBody('');
     setReviewRatings([0]);
