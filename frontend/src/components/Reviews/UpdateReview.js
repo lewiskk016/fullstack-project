@@ -9,10 +9,9 @@ const EditReviews = ({review}) => {
     const [editTitle, setEditTitle] = useState(review.title);
     const [editBody, setEditBody] = useState(review.body);
     const dispatch = useDispatch();
-    const {itemId} = useParams();
     const session = useSelector(state => state.session);
     const sessionUser = session.user;
-    const userId = sessionUser?.id;
+
 
    const handleEditReview = e => {
     const reviewObject = {
@@ -32,17 +31,14 @@ const EditReviews = ({review}) => {
 
         if (!editMode) {
             return (
-              <div>
-                {/* <div>Title: {review.title}</div>
-                <div>Body: {review.body}</div>
-                <div>Rating: {review.rating}</div> */}
+              <div className="edit-mode-button">
                 <button onClick={toggleEditMode}>Edit</button>
               </div>
             );
           }
 
         return (
-            <div>
+            <div className="edit-container">
                 <form onSubmit={handleEditReview}>
                     <div>
                         <label>
@@ -64,7 +60,33 @@ const EditReviews = ({review}) => {
                             />
                         </label>
                     </div>
-                    <div>
+
+
+                    <div className="form-group">
+          <label>Rating</label>
+          <div className="rating-stars">
+            {[1, 2, 3, 4, 5].map((rating) => (
+              <span
+                key={rating}
+                className={`star ${rating <= editRatings ? 'filled' : ''}`}
+                onClick={() => setEditRatings(rating)}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+                    {/* <div>
                         <label>
                             <input
                                 type="text"
@@ -73,7 +95,10 @@ const EditReviews = ({review}) => {
                                 onChange={e => setEditRatings(e.target.value)}
                             />
                         </label>
-                    </div>
+                    </div> */}
+
+
+
                     <div>
                         <button type="submit">Edit Review</button>
                     </div>
