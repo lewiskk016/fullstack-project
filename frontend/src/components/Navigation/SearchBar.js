@@ -9,7 +9,6 @@ const SearchBar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         // dispatch(search(searchTerm));

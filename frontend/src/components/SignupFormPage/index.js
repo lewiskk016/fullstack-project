@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import { useHistory, useLocation } from "react-router-dom";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -12,29 +13,64 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (password === confirmPassword) {
+  //     setErrors([]);
+  //     return dispatch(sessionActions.signup({ email, username, password }))
+
+
+
+  //       .catch(async (res) => {
+  //       let data;
+  //       try {
+  //         data = await res.clone().json();
+  //       } catch {
+  //         data = await res.text(); // Will hit this case if, e.g., server is down
+  //       }
+
+
+
+
+  //       if (data?.errors) setErrors(data.errors);
+  //       else if (data) setErrors([data]);
+  //       else setErrors([res.statusText]);
+  //     });
+  //   }
+  //   return setErrors(['Confirm Password field must be the same as the Password field']);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
+
+      try {
+        await dispatch(sessionActions.signup({ email, username, password }));
+
+        const previousPath = history.length > 1 ? history.goBack() : "/";
+        history.push(previousPath);
+      } catch (res) {
         let data;
         try {
-          // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
-          data = await res.text(); // Will hit this case if, e.g., server is down
+          data = await res.text();
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
-      });
+      }
+    } else {
+      setErrors(['Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
 
   return (
     <>

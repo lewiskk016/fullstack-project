@@ -63,42 +63,20 @@ const EditReviews = ({review}) => {
 
 
                     <div className="form-group">
-          <label>Rating</label>
-          <div className="rating-stars">
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <span
-                key={rating}
-                className={`star ${rating <= editRatings ? 'filled' : ''}`}
-                onClick={() => setEditRatings(rating)}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-                    {/* <div>
-                        <label>
-                            <input
-                                type="text"
-                                placeholder="Rating"
-                                value={editRatings}
-                                onChange={e => setEditRatings(e.target.value)}
-                            />
-                        </label>
-                    </div> */}
-
-
-
+                        <label>Rating</label>
+                        <div className="rating-stars">
+                            {[1, 2, 3, 4, 5].map((rating) => (
+                            <span
+                                key={rating}
+                                className={`star ${rating <= editRatings ? 'filled' : ''}`}
+                                onClick={() => setEditRatings(rating)}
+                                >
+                                ★
+                            </span>
+                            ))}
+                        </div>
+                    </div>
+                    
                     <div>
                         <button type="submit">Edit Review</button>
                     </div>
