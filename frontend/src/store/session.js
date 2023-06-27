@@ -67,8 +67,12 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
+// const initialState = {
+//   user: JSON.parse(sessionStorage.getItem("currentUser"))
+// };
+
 const initialState = {
-  user: JSON.parse(sessionStorage.getItem("currentUser"))
+  user: JSON.parse(sessionStorage.getItem("currentUser")) || {} // Set user as an empty object if currentUser is null or undefined
 };
 
 const sessionReducer = (state = initialState, action) => {
@@ -77,6 +81,9 @@ const sessionReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case REMOVE_CURRENT_USER:
       return { ...state, user: null };
+
+      // case REMOVE_CURRENT_USER:
+      // return { ...state, user: {} };
     default:
       return state;
   }

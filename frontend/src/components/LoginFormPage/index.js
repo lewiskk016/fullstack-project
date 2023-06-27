@@ -16,37 +16,12 @@ function LoginFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setErrors([]);
-  //   return dispatch(sessionActions.login({ credential, password }))
-  //   .then(() => {
-  //     const {from} = location.state || {from: {pathname: "/"}};
-  //     history.replace(from);
-  //   })
-  //     .catch(async (res) => {
-  //       let data;
-  //       try {
-  //         data = await res.clone().json();
-  //       } catch {
-  //         data = await res.text();
-  //       }
-  //       if (data?.errors) setErrors(data.errors);
-  //       else if (data) setErrors([data]);
-  //       else setErrors([res.statusText]);
-  //     });
-  // };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-
     try {
       await dispatch(sessionActions.login({ credential, password }));
-
-
       const previousPath = history.length > 1 ? history.goBack() : "/";
       history.push(previousPath);
     } catch (res) {
@@ -57,14 +32,11 @@ function LoginFormPage() {
         data = await res.text();
       }
 
-
       if (data?.errors) setErrors(data.errors);
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     }
   };
-
-
 
 
   return (

@@ -4,10 +4,14 @@ import { fetchShoppingCart, updateShoppingCart, updateShoppingList, deleteShoppi
 import { useHistory } from "react-router-dom";
 import './ShoppingListIndex.css';
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { logout } from "../../store/session";
 
 const ShoppingListIndex = () => {
   const shoppingListItem = useSelector((state) => state.shoppingList);
-  const userId = useSelector((state) => state.session.user.id);
+  // const userId = useSelector((state) => state.session.user.id);
+  const userId = useSelector((state) => state.session.user?.id);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const shoppingList = useSelector((state) => Object.values(state.shoppingList));
@@ -17,6 +21,7 @@ const ShoppingListIndex = () => {
   const [showDeleteForm, setShowDeleteForm] = useState(false);
   const [showDeleteButton, setShowDeleteButton] = useState(true);
   const [showEditButton, setShowEditButton] = useState(true);
+  const sessionUser = useSelector((state) => state.session.user);
 
 
   const totalPrice = (shoppingListItems) => {
@@ -44,6 +49,20 @@ const ShoppingListIndex = () => {
   const newQuantity = parseInt(e.target.value);
   dispatch(updateShoppingList(userId, itemId, newQuantity));
 };
+
+const handleLogout = () => {
+  dispatch(logout())
+    .then(() => {
+      history.push('/'); // Redirect to splash page after logout
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+if (!sessionUser || sessionUser === null) {
+  return <div>Loading...</div>; // or any other fallback UI when sessionUser is null
+}
 
   return (
     <div className="entire-window">

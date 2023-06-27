@@ -17,33 +17,6 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (password === confirmPassword) {
-  //     setErrors([]);
-  //     return dispatch(sessionActions.signup({ email, username, password }))
-
-
-
-  //       .catch(async (res) => {
-  //       let data;
-  //       try {
-  //         data = await res.clone().json();
-  //       } catch {
-  //         data = await res.text(); // Will hit this case if, e.g., server is down
-  //       }
-
-
-
-
-  //       if (data?.errors) setErrors(data.errors);
-  //       else if (data) setErrors([data]);
-  //       else setErrors([res.statusText]);
-  //     });
-  //   }
-  //   return setErrors(['Confirm Password field must be the same as the Password field']);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 

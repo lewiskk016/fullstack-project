@@ -14,6 +14,7 @@ const CreateReviews = ({review}) => {
   const [reviewRatings, setReviewRatings] = useState([0]);
   const [reviewTitle, setReviewTitle] = useState('');
   const [reviewBody, setReviewBody] = useState('');
+  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user?.id)
   const history = useHistory();
@@ -22,6 +23,24 @@ const CreateReviews = ({review}) => {
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
+
+    const validationErrors = [];
+    if (!reviewTitle.trim()) {
+      validationErrors.push('Please enter a title.');
+    }
+    if (!reviewBody.trim()) {
+      validationErrors.push('Please enter a review body.');
+    }
+    if (reviewRatings === 0) {
+      validationErrors.push('Please select a rating.');
+    }
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+
     const reviewObject = {
      rating: reviewRatings,
      title: reviewTitle,
@@ -33,6 +52,7 @@ const CreateReviews = ({review}) => {
     setReviewTitle('');
     setReviewBody('');
     setReviewRatings([0]);
+    setErrors([]);
   };
 
   if (!sessionUser) {
@@ -46,6 +66,13 @@ const CreateReviews = ({review}) => {
   return (
     <div className="review-form-container">
       <h3>Write a Review</h3>
+      {errors.length > 0 && (
+        <div className="errors-container">
+          {errors.map((error, index) => (
+          <p key={index}>{error}</p>
+          ))}
+          </div>
+      )}
       <form onSubmit={handleReviewSubmit}>
         <div className="form-group">
           <label htmlFor="review-title">Title</label>
@@ -72,18 +99,18 @@ const CreateReviews = ({review}) => {
                 key={rating}
                 className={`star ${rating <= reviewRatings ? 'filled' : ''}`}
                 onClick={() => setReviewRatings(rating)}
-              >
+                >
                 ★
               </span>
             ))}
+            <hr></hr>
           </div>
 
         </div>
 
         <button type="submit">Submit Review</button>
       </form>
-
-
+      <hr></hr>
     </div>
   );
 };
