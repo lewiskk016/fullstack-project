@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :shopping_lists, only: [:index, :create, :update, :destroy]
     resources :reviews, only: [:index, :create, :update, :destroy]
-    # resources :posts, only: [:show]
+    # resources :categories, only: [:index, :show]
+    resources :searches, only: [:index, :show] do
+      collection do
+        get :search # Add this line to define the search route
+      end
+    end
   end
 
 

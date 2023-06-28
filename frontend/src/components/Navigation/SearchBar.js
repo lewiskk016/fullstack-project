@@ -2,17 +2,19 @@ import {useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import './SearchBar.css'
+import { searchRequest } from "../../store/search";
 
 
 const SearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+    const [query, setQueryTerm] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch(search(searchTerm));
-        history.push("/search");
+        console.log("Form submitted"); // Add this line
+        dispatch(searchRequest(query));
     };
 
     return (
@@ -21,8 +23,8 @@ const SearchBar = () => {
                 <input
                     type="text"
                     placeholder="Search Aveson"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    value={query}
+                    onChange={(e) => setQueryTerm(e.target.value)}
                 />
                 <button className="button" type="submit">Search</button>
             </form>

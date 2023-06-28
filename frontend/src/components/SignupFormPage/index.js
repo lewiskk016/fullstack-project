@@ -92,6 +92,9 @@ function SignupFormPage() {
               <Link to="/login" className="login-link">
                 Login
               </Link>
+              <br></br>
+              <hr></hr>
+              <Link to="/">Cancel</Link>
             </div>
       </form>
     </div>

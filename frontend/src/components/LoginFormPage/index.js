@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import './LoginForm.css';
 import { useHistory, useLocation } from "react-router-dom";
+import { useRef } from "react";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
   const location = useLocation();
+  const prevPathRef = useRef("");
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -20,10 +22,13 @@ function LoginFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    prevPathRef.current = location.state?.from || "";
+
     try {
       await dispatch(sessionActions.login({ credential, password }));
       const previousPath = history.length > 1 ? history.goBack() : "/";
       history.push(previousPath);
+      history.push(prevPathRef.current || "/");
     } catch (res) {
       let data;
       try {
@@ -74,6 +79,9 @@ function LoginFormPage() {
               <Link to="/signup" className="signup-link">
                 Sign Up
               </Link>
+              <br></br>
+              <hr></hr>
+              <Link to={prevPathRef.current || "/"}>Cancel</Link> {/* Update cancel link */}
             </div>
       </form>
       </div>
