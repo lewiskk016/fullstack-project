@@ -8,7 +8,7 @@ import SubNavigation from "./components/SubNavigation";
 import ItemsIndex from "./components/ItemsIndex";
 import ItemShow from "./components/ItemShow";
 import ShoppingListIndex from "./components/ShoppingList/ShoppingListIndex";
-import { getSearchResults } from "./store/search";
+import Search from "./components/SearchResults";
 
 function App() {
   const location = useLocation();
@@ -24,7 +24,7 @@ function App() {
         <Route exact path="/items/:itemId" component={ItemShow} />
         <Route exact path="/login" component={LoginFormPage} />
         <Route exact path="/signup" component={SignupFormPage} />
-        <Route exact path="/search/:query" component={getSearchResults} />
+        <Route exact path="/searches/:query" component={Search} />
         <Route exact path="/shopping_lists" component={ShoppingListIndex} />
       </Switch>
       </div>

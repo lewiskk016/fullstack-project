@@ -3,18 +3,30 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import './SearchBar.css'
 import { searchRequest } from "../../store/search";
+import Search from "../SearchResults";
+import {useRef } from "react";
 
 
 const SearchBar = () => {
     const [query, setQueryTerm] = useState("");
     const dispatch = useDispatch();
     const history = useHistory();
+    const previousQuery = useRef(""); // Track the previous query value
+
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form submitted"); // Add this line
+        if (query.trim === null) {
+            history.push("/items")
+        }
+        if (query.trim() === "" && previousQuery.current.trim() === "") {
+            history.push("/items")
+    } else {
         dispatch(searchRequest(query));
+        history.push(`/searches/${query}`);
+    }
     };
 
     return (

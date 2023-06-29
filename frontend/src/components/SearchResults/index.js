@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../store/item';
 import './Search.css';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const Search = ({ query }) => {
+const Search = () => {
   const dispatch = useDispatch();
   const items = useSelector(state => Object.values(state.items));
-  const [searchResults, setSearchResults] = useState([]);
-
+  const { query} = useParams();
 
   useEffect(() => {
     dispatch(fetchItems());
@@ -19,13 +19,21 @@ const Search = ({ query }) => {
   }, [query]);
 
   const filterItems = (query) => {
-    const filteredItems = items.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
-    setSearchResults(filteredItems);
+    const filteredItems = items.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+    return filteredItems;
   };
+
+  const searchResults = filterItems(query); // Filter items based on the query
+
 
   return (
     <div className="search-container">
       <h2>Search Results for "{query}"</h2>
+      {searchResults.length === 0? (
+        <h3 className="no-results">No results found</h3>
+      ) : (
       <div className="items-container">
         {searchResults.map(item => (
           <Link to={`/items/${item.id}`} key={item.id} className="item">
@@ -47,6 +55,7 @@ const Search = ({ query }) => {
           </Link>
         ))}
       </div>
+      )}
     </div>
   );
 };
