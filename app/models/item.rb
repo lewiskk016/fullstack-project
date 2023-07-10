@@ -11,11 +11,6 @@ class Item < ApplicationRecord
     class_name: :Review,
     dependent: :destroy
 
-    def update_reviews
-        # total_rating = reviews.sum(:rating)
-        average_rating = reviews.average(:rating)
-        average_rating
-    end
 
     has_one_attached :photo
 end

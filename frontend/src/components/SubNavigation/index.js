@@ -13,22 +13,22 @@ function SubNavigation() {
                     <NavLink exact to="/items">All</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/3">Binoculars</NavLink>
+                    <NavLink exact to="/items/category/Binoculars">Binoculars</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/20">Books</NavLink>
+                    <NavLink exact to="/items/category/Books">Books</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/18">Feeders</NavLink>
+                    <NavLink exact to="/items/category/Feeder">Feeders</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/15">Seed</NavLink>
+                    <NavLink exact to="/items/category/Seed">Seed</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/16">Baths</NavLink>
+                    <NavLink exact to="/items/category/Bath">Baths</NavLink>
                 </div>
                 <div className="sub-navigation-item">
-                    <NavLink exact to="/items/11">Houses</NavLink>
+                    <NavLink exact to="/items/category/Houses">Houses</NavLink>
                 </div>
                 </div>
         </nav>

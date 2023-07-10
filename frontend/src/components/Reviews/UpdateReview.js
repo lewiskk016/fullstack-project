@@ -41,7 +41,7 @@ const EditReviews = ({review}) => {
             <div className="edit-container">
                 <form onSubmit={handleEditReview}>
                     <div>
-                        <label>
+                        <label> Title:
                             <input
                                 type="text"
                                 placeholder="Title"
@@ -50,8 +50,8 @@ const EditReviews = ({review}) => {
                             />
                         </label>
                     </div>
-                    <div>
-                        <label>
+                    <div className="text">
+                        <label>  Description:  
                             <input
                                 type="text"
                                 placeholder="Body"
@@ -76,7 +76,7 @@ const EditReviews = ({review}) => {
                             ))}
                         </div>
                     </div>
-                    
+
                     <div>
                         <button type="submit">Edit Review</button>
                     </div>

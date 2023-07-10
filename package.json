@@ -12,6 +12,7 @@
     "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"

@@ -9,6 +9,7 @@ import ItemsIndex from "./components/ItemsIndex";
 import ItemShow from "./components/ItemShow";
 import ShoppingListIndex from "./components/ShoppingList/ShoppingListIndex";
 import Search from "./components/SearchResults";
+import Category from "./components/Category/category";
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/" component={Splash} />
         <Route exact path="/items" component={ItemsIndex} />
         <Route exact path="/items/:itemId" component={ItemShow} />
+        <Route path="/items/category/:category" component={Category} />
         <Route exact path="/login" component={LoginFormPage} />
         <Route exact path="/signup" component={SignupFormPage} />
         <Route exact path="/searches/:query" component={Search} />

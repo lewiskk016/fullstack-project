@@ -26,12 +26,24 @@ export const getItem = (itemId) => (state) => {
   return state?.items ? state.items[itemId] : null
 }
 
+export const getItemCategories = (category) => (state) => {
+  const items = getItems(state);
+  if (category) {
+    return items.filter((item) =>
+      item.category.toLowerCase() === category.toLowerCase()
+    );
+  } else {
+    return items;
+  }
+};
+
+
 export const fetchItems = () => async (dispatch) => {
     const response = await csrfFetch('/api/items');
     if (response.ok) {
       const data = await response.json();
       dispatch(retrieveItems(data));
-    } 
+    }
   };
 
 export const fetchItem = (itemId) => async (dispatch) => {

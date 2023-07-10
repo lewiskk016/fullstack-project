@@ -10,6 +10,7 @@ import { fetchReview, RETRIEVE_REVIEWS } from '../../store/reviews';
 import { retrieveReview } from '../../store/reviews';
 import { updateReview, deleteReview } from '../../store/reviews';
 import EditReviews from '../Reviews/UpdateReview';
+import '../Reviews/UpdateReview.css'
 
 
 const ItemShow = () => {

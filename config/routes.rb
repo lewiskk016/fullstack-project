@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :users, only: :create
     resource :session, only: [:show, :create, :destroy]
     resources :items, only: [:index, :show]
+    get 'items/category/:category', to: 'items#index', as: 'category_items'
     resources :shopping_lists, only: [:index, :create, :update, :destroy]
     resources :reviews, only: [:index, :create, :update, :destroy]
-    # resources :categories, only: [:index, :show]
     resources :searches, only: [:index, :show] do
       collection do
         get :search # Add this line to define the search route

@@ -84,7 +84,7 @@ const CreateReviews = ({review}) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="review-body">Body</label>
+          <label htmlFor="review-body">Description</label>
           <textarea
             name="review-body"
             value={reviewBody}
