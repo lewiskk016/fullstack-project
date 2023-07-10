@@ -7,6 +7,8 @@ import './Navigation.css';
 import SearchBar from './SearchBar';
 import AuthDropdown from './AuthDropdown';
 import alogo from '../../Images/a-logo.jpg'
+import githubLogo from './github-mark.png';
+import linkedinLogo from './Linkedin-mark.png';
 // import Subnavigation from '../SubNavigation';
 
 function Navigation() {
@@ -33,9 +35,19 @@ function Navigation() {
     <nav className="navigation-container">
         <div className="navigation-row">
           <div className="navigation-item">
+          <div className="left-links">
             <NavLink exact to="/" className="navigation-home-link">
             <img className="alogos" src={alogo} alt="alogo" />
             </NavLink>
+            <span className="links">
+            <NavLink to="https://github.com/lewiskk016">
+            <img className="logo" src={githubLogo} alt="GitHub" />
+            </NavLink>
+            <NavLink to="https://linkedin.com/in/kevin-lewis-5b0baa27b/">
+            <img className="logo" src={linkedinLogo} alt="LinkedIn" />
+            </NavLink>
+            </span>
+            </div>
           </div>
           <div className="navigation-item-search-bar-container">
             <SearchBar />

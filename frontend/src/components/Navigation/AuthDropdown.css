@@ -52,6 +52,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 999;
   }
 
   .dropdown-content {
@@ -64,7 +65,7 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
-    z-index: 1;
+    z-index: 999;
   }
 /*
   .dropdown-content > div {
@@ -92,4 +93,5 @@
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+    z-index: 999;
   }

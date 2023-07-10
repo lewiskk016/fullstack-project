@@ -11,6 +11,7 @@ import { retrieveReview } from '../../store/reviews';
 import { updateReview, deleteReview } from '../../store/reviews';
 import EditReviews from '../Reviews/UpdateReview';
 import '../Reviews/UpdateReview.css'
+import '../Reviews/CreateReview.css'
 
 
 const ItemShow = () => {
@@ -85,16 +86,6 @@ const ItemShow = () => {
       dispatch(deleteReview(reviewId));
     };
 
-    // const handleUpdateReview = (e) => {
-    //   const reviewObject = {
-    //     rating: reviewRatings,
-    //     title: reviewTitle,
-    //     body: reviewBody,
-    //     userId: userId,
-    //     itemId: itemId,
-    //   };
-    //   dispatch(updateReview(reviewObject));
-    // };
 
     return (
         <div id="item-show-container" className="item-show-container">

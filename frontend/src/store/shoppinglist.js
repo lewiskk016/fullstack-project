@@ -121,8 +121,8 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
 
 
 
-    const initialState = {
-    };
+      const initialState = {
+      };
     const shoppingListReducer = (state = initialState, action) => {
         // Object.freeze(state);
         // nextState = {...state};

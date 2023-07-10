@@ -27,7 +27,6 @@ const ShoppingListIndex = () => {
   const [showModal, setShowModal] = useState(false);
 
 
-
   const totalPrice = (shoppingListItems) => {
     let total = 0;
     Object.entries(shoppingListItems).forEach(([itemId, quantity]) => {
