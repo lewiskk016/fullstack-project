@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get 'items/category/:category', to: 'items#index', as: 'category_items'
     resources :shopping_lists, only: [:index, :create, :update, :destroy]
+
     resources :reviews, only: [:index, :create, :update, :destroy]
     resources :searches, only: [:index, :show] do
       collection do

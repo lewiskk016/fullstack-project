@@ -25,9 +25,10 @@ const removeShoppingListItem = (itemId) => ({
      itemId
 });
 
-const removeShoppingListItems = (itIds) => ({
+const removeShoppingListItems = (itemIds) => ({
     type: REMOVE_SHOPPING_LIST_ITEMS,
-    itIds
+    itemIds
+
 });
 
 export const updateShoppingListItem = (itemId, quantity) => ({
@@ -104,22 +105,24 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
         }
       };
 
-    export const checkoutShoppingList = (userId) => async (dispatch) => {
+      export const deleteShoppingList = (userId, itemsId) => async (dispatch) => {
         const response = await csrfFetch('/api/shopping_lists', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userId)
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId, itemsId }),
         });
         if (response.ok) {
-            dispatch(removeShoppingListItems());
+          dispatch(removeShoppingListItems(itemsId));
         }
-    }
+      };
 
 
 
-    const initialState = {};
+
+    const initialState = {
+    };
     const shoppingListReducer = (state = initialState, action) => {
         // Object.freeze(state);
         // nextState = {...state};
@@ -142,8 +145,10 @@ export const createShoppingListItem = (userId, itemId, quantity) => async (dispa
 
                 return { ...state, [action.payload.itemId]: action.payload.quantity, }
 
-
-            default:
+                case REMOVE_SHOPPING_LIST_ITEMS:
+                const { itemIds: removedItemIds, ...updateddState } = state;
+                return updateddState;
+                default:
                 return state;
         }
     }
