@@ -40,12 +40,12 @@ function Navigation() {
             <img className="alogos" src={alogo} alt="alogo" />
             </NavLink>
             <span className="links">
-            <NavLink to="https://github.com/lewiskk016">
-            <img className="logo" src={githubLogo} alt="GitHub" />
-            </NavLink>
-            <NavLink to="https://linkedin.com/in/kevin-lewis-5b0baa27b/">
-            <img className="logo" src={linkedinLogo} alt="LinkedIn" />
-            </NavLink>
+              <a href="https://github.com/lewiskk016" target="_blank" rel="noopener noreferrer">
+                <img className="logo" src={githubLogo} alt="GitHub" />
+              </a>
+              <a href="https://linkedin.com/in/kevin-lewis-5b0baa27b/" target="_blank" rel="noopener noreferrer">
+                <img className="logo" src={linkedinLogo} alt="LinkedIn" />
+              </a>
             </span>
             </div>
           </div>
