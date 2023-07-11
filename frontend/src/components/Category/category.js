@@ -30,7 +30,7 @@ const Category = () => {
       <div className="search-container">
         <h2>Search Results for "{category}"</h2>
         {categoryResults.length === 0 ? (
-          <h3 className="no-results">No results found</h3>
+          <h3 className="no-results">Loading...</h3>
         ) : (
           <div className="items-container">
             {categoryResults.map((item) => (
@@ -56,5 +56,5 @@ const Category = () => {
     );
   };
 
-  
+
 export default Category;
