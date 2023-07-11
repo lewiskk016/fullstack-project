@@ -112,7 +112,7 @@
 .leftcolumn-checkout {
     float: left;
     margin-top: 120px;
-    width: 700px;
+    width: 60%;
     height: 100%;
     z-index: -999;
     margin-left: 40px;
@@ -173,7 +173,7 @@
   }
 
   .cartItemprice {
-    position: relative;
+    /* position: relative; */
     left: 660px;/* Adjust the margin as needed */
     font-family: "Amazon Ember", Arial, sans-serif;
     font-size: 18px;
@@ -182,7 +182,7 @@
   }
 
   .cartItemquantity {
-    position: absolute;
+    /* position: absolute; */
     left: 500px;/* Adjust the margin as needed */
     font-family: "Amazon Ember", Arial, sans-serif;
     font-size: 18px;
@@ -207,4 +207,31 @@
     font-weight: 400;
     color: blue;
     font-weight: 700;
+  }
+
+  .modal-content {
+    background-color: #afa9a9ab;
+    border: 3px solid #201f1f;
+    margin-top: 100px;
+    width: 50%;
+    height: 60%;
+    position: fixed; /* Update the position to fixed */
+    top: 50%; /* Center the modal vertically */
+    left: 50%; /* Center the modal horizontally */
+    transform: translate(-50%, -50%); /* Center the modal precisely */
+    z-index: 99;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .thank-you-message {
+    font-weight: 700;
+        box-sizing: border-box;
+        font-family: "Amazon Ember", Arial, sans-serif;
+        color: blue;
+        font-size: 14px;
+        line-height: 20px;
+        align-items: center;
+        justify-content: center;
   }

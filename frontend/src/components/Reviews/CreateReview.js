@@ -31,7 +31,7 @@ const CreateReviews = ({review}) => {
     if (!reviewBody.trim()) {
       validationErrors.push('Please enter a review body.');
     }
-    if (reviewRatings === 0) {
+    if (reviewRatings[0] === 0) {
       validationErrors.push('Please select a rating.');
     }
 
@@ -42,11 +42,11 @@ const CreateReviews = ({review}) => {
 
 
     const reviewObject = {
-     rating: reviewRatings,
-     title: reviewTitle,
-     body: reviewBody,
-     userId: userId,
-     itemId: itemId,
+      rating: reviewRatings,
+      title: reviewTitle,
+      body: reviewBody,
+      userId: userId,
+      itemId: itemId,
     };
     dispatch(createReview(reviewObject));
     setReviewTitle('');
@@ -65,22 +65,25 @@ const CreateReviews = ({review}) => {
 
   return (
     <div className="review-form-container">
-      <h3>Write a Review</h3>
+      <h3 className="write-a-review">Write a Review</h3>
       {errors.length > 0 && (
         <div className="errors-container">
           {errors.map((error, index) => (
-          <p key={index}>{error}</p>
+            <p key={index} className="error-message">
+              {error}
+            </p>
           ))}
-          </div>
+        </div>
       )}
       <form onSubmit={handleReviewSubmit}>
-        <div className="form-group">
+      <div className="form-group">
           <label htmlFor="review-title">Title</label>
           <input
             type="text"
             name="review-title"
             value={reviewTitle}
             onChange={(e) => setReviewTitle(e.target.value)}
+            className={errors.includes('Please enter a title.') ? 'error-field' : ''}
           />
         </div>
         <div className="form-group">
@@ -89,22 +92,23 @@ const CreateReviews = ({review}) => {
             name="review-body"
             value={reviewBody}
             onChange={(e) => setReviewBody(e.target.value)}
+            className={errors.includes('Please enter a review body.') ? 'error-field' : ''}
           ></textarea>
         </div>
         <div className="form-group">
           <label>Rating</label>
           <div className="rating-stars">
-            {[1, 2, 3, 4, 5].map((rating) => (
-              <span
-                key={rating}
-                className={`star ${rating <= reviewRatings ? 'filled' : ''}`}
-                onClick={() => setReviewRatings(rating)}
-                >
-                ★
-              </span>
-            ))}
-            <hr></hr>
-          </div>
+  {[1, 2, 3, 4, 5].map((rating) => (
+    <span
+      key={rating}
+      className={`star ${rating <= reviewRatings ? 'filled' : ''}`}
+      onClick={() => setReviewRatings(rating)}
+    >
+      ★
+    </span>
+  ))}
+  <hr />
+</div>
 
         </div>
 

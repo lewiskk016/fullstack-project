@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
 import { deleteShoppingList } from '../../store/shoppinglist';
+import githubLogo from './github-mark.png';
+import linkedinLogo from './Linkedin-mark.png';
 
 
 const ShoppingListIndex = () => {
@@ -172,23 +174,32 @@ if (!sessionUser || sessionUser === null) {
               <br />
               <br />
               <button className="checkout-button" onClick={handleCheckout}>Purchase</button>
+              </div>
+              </div>
+              </div>
+              </div>
               {showModal && (
-                 <div className="modal">
+                <div className="modal">
                 <div className="modal-content">
-                <h3>Thank you for shopping!</h3>
+                <h3 className="thank-you-message">Thank you for shopping at Aveson. You're order has been received!
+                  <hr></hr> Feel Free to check out these additional links in the meantime</h3>
+                  <span className="links">
+              <a href="https://github.com/lewiskk016" target="_blank" rel="noopener noreferrer">
+                <img className="logo" src={githubLogo} alt="GitHub" />
+              </a>
+              <a href="https://linkedin.com/in/kevin-lewis-5b0baa27b/" target="_blank" rel="noopener noreferrer">
+                <img className="logo" src={linkedinLogo} alt="LinkedIn" />
+              </a>
+            </span>
                 <button onClick={handleCloseModal}>Close</button>
                </div>
                 </div>
                 )}
-            </div>
-          </div>
-        </div>
+                </div>
 
 
-      </div>
 
 
-      </div>
   );
 };
 

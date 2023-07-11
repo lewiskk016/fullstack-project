@@ -199,30 +199,22 @@ const ItemShow = () => {
                     <hr></hr>
 
                     <div className="reviews-container">
-                        {/* <h3 className="reviews">Customer Ratings</h3>
-                        {[1, 2, 3, 4, 5].map((rating) => (
-                        <span
-                        key={rating}
-                        className={`star ${rating <= 3 ? 'filled' : ''}`}
-                         onClick={() => handleRatingClick(rating)}
-                        >
-                        ★
-                        </span>
-                        ))} */}
+
                         <div className="reviews-container">
                         <CreateReviews/>
                         </div>
-                        <div>
-  <h4>Reviews:</h4>
-  {reviews
-    .filter(review => review.itemId === item.id)
-    .map(review => (
-      <div key={review.id}>
-        <p>Rating: {renderRatingStars(review.rating)}</p>
-        <p>Title: {review.title}</p>
-        <p>Body: {review.body}</p>
+                <div className="reviews-list">
+                    <h4 className="reviews-word">Reviews:</h4>
 
-                  {userId === review.userId && (
+                    {reviews
+                      .filter(review => review.itemId === item.id)
+                      .map(review => (
+                      <div key={review.id}>
+                        <p>Rating: {renderRatingStars(review.rating)}</p>
+                        <p>Title: {review.title}</p>
+                        <p>Body: {review.body}</p>
+                        {review.user && <p>Author: {review.user.username}</p>}
+                        {userId === review.userId && (
                   <div>
                     <button
                       onClick={() => dispatch(deleteReview(review.id))}
@@ -231,12 +223,12 @@ const ItemShow = () => {
                     </button>
                     <EditReviews review={review} />
                   </div>
-                )}
+                        )}
 
-        <hr />
-      </div>
-    ))}
-  {reviews.filter(review => review.itemId === item.id).length === 0 && (
+                    <hr />
+                  </div>
+                    ))}
+                {reviews.filter(review => review.itemId === item.id).length === 0 && (
     <p>Be the First to Leave a Review</p>
   )}
 </div>

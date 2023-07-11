@@ -216,3 +216,22 @@
     display: flex;
     align-items: center;
   }
+
+
+  .reviews-list {
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #161616;
+    display: grid;
+    background-color: rgb(240, 247, 247);
+    width: 100%;
+  }
+
+  .reviews-word {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: rgb(16, 16, 17);
+    font-family: "Amazon Ember", Arial, sans-serif;
+    width: 25%;
+  }
